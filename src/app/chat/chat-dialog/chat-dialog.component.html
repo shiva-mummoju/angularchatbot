@@ -5,7 +5,8 @@
 <ng-container  *ngFor="let message of messages | async">
 
   <div class="message"  [ngClass]="{ 'from': message.sentBy === 'bot',
-                                    'to':   message.sentBy === 'user' }">
+                                    'to':   message.sentBy === 'user' }"
+                                    >
     {{ message.content }}
   </div>
 
@@ -18,11 +19,11 @@
 <div class="position: fixed !important; z-index: -1" >
   
   
-  <div class="row" style="margin:0px" >
+  <!-- <footer class="row myfooter" style="margin:0px" >
   <div class="col col-lg-10 col-xs-10" style="padding:0px">
   <input [(ngModel)]="formValue"  class="form-control"  (keyup.enter)="sendMessage()" type="text"></div>
   <div class="col col-lg-2 col-xs-2" style="padding:0px" ><button (click)="sendMessage()" class="btn btn-primary" >Send</button></div>
-  </div>
+  </footer> -->
 
 
 

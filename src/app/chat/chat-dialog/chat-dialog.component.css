@@ -4,17 +4,21 @@
     padding: 15px 20px;
     position: relative;
     font-weight: bold;
+
+    animation: fadein .3s forwards;
 }
 .message.to {
     background-color: #2095FE;
     color: #fff;
     margin-left: 100px;
     text-align: right;
+
 }
 .message.from {
     background-color: #E5E4E9;
     color: #363636;
     margin-right: 100px;
+
 
 }
 .message.to + .message.to,
@@ -23,8 +27,9 @@ margin-top: -10px;
 }
 
 .message:last-child{
-    margin-bottom: 100px;
+    margin-bottom: 60px;
 }
+
 
 .message::-webkit-scrollbar{
     width: 1px;
@@ -35,9 +40,21 @@ width: 1px;
 
 
 .mymsgbox{
-    height: calc(100vh - 95px);
+    height: calc(100vh - 125px) !important;
     overflow-y: scroll;
     width: 100%;
     margin-top: 5px;
-    
+    /* height: 100% !important; */
+    /* display: flex; */
+    /* flex-direction: column-reverse; */
+
+}
+
+@keyframes fadein{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
