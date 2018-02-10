@@ -28,6 +28,7 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges {
 
   ngOnInit() {
     // setInterval(this.pushdown,100);
+    
     this.chat.greet();
 
     // appends to array after each new message is added to feedSource
@@ -55,6 +56,7 @@ ngOnChanges(){
     this.chat.converse(this.formValue);
     this.formValue = '';
     document.getElementById('msgbox').scrollTop = document.getElementById('msgbox').scrollHeight;
+    console.log('send message called')
   }
 
   scrollToBottom():void {
@@ -65,6 +67,6 @@ ngOnChanges(){
 
   pushdown(){
     document.getElementById('msgbox').scrollTop = document.getElementById('msgbox').scrollHeight;
-    console.log('Pushdown called in chat');
+    // console.log('Pushdown called in chat');
   }
 }

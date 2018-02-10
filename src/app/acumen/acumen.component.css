@@ -1,0 +1,48 @@
+.acumen{
+    height: 100vh;
+    width: 100%;    
+    
+}
+
+.aboutacumen{
+    /* height: 100%; */
+    
+    /* background-position: center; */
+}
+
+.aboutacumen img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.aboutacumen h1{
+    margin-top: -100px;
+    z-index: 10;
+}
+
+@media (max-width: 400px){
+    .aboutacumen img{
+        width: 100%;
+    }
+    .data p{
+        font-size: 20px;
+    }
+}
+
+.data{
+    margin-top: -5px;
+    height: 100%;
+    background-color: rgb(241, 121, 100);
+}
+
+.data p{
+    padding: 20px;
+    font-size: 20px;
+    /* align-content: center; */
+    color: white;
+}
+.data h1{
+    padding: 25px;
+    color: white;
+}

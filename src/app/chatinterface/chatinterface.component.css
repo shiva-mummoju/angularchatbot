@@ -1,0 +1,9 @@
+.buffer{
+    height: 50px;
+    width: 100%;
+}
+
+.back{
+    height: 100vh;
+    background-image: url('../../assets/bg4.jpg');
+}

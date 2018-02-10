@@ -5,9 +5,10 @@ import { ApiAiClient } from 'api-ai-javascript';
 
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { OnInit } from '@angular/core/';
+import { OnInit } from '@angular/core';
 import { Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import{Howl,Howler} from 'howler';
 // import { ViewChild } from '@angular/core';
 
 // import { ChatDialogComponent } from './chat-dialog/chat-dialog.component';
@@ -17,20 +18,36 @@ export class Message {
 }
 
 @Injectable()
-export class ChatService{
-
+export class ChatService implements OnInit{
+  private inaudio;
+  private outautio;
+  // using howler for playing sounds
+   insound = new Howl({
+     src: ['../../assets/in.mp3']
+   });
+   outsound = new Howl({
+    src: ['../../assets/out.mp3']
+  });
   // @ViewChild(ChatDialogComponent) private mychat: ChatDialogComponent;
   @Output()  myevent = new EventEmitter<void>();
   
-  readonly token = environment.dialogflow.angularBot;
+
+
+
+  readonly token = environment.dialogflow.Acumen;
   readonly client = new ApiAiClient({ accessToken: this.token });
 
   conversation = new BehaviorSubject<Message[]>([]);
 
   constructor() {}
 
+  ngOnInit(){
+   
+    
+  }
+
   greet(){
-    const greet = new Message("Hey this is vasavi Chatbot, How may I help you?",'bot');
+    const greet = new Message(" How may I help you?",'bot');
     this.update(greet);
   }
 
@@ -52,7 +69,11 @@ export class ChatService{
   // Adds message to source
   update(msg: Message) {
     this.conversation.next([msg]);
-    console.log('About to emit from service');
+    if( msg.sentBy === 'bot'){
+      this.insound.play();
+    }
+   
+    // console.log('About to emit from service');
     this.myevent.emit();
     
   }

@@ -2,3 +2,8 @@
     height: 50px !important;
     width: 100% ; 
 }
+
+
+app-welcomescreen{
+    background-color: black;
+}

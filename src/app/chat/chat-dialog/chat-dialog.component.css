@@ -15,8 +15,8 @@
 
 }
 .message.from {
-    background-color: #E5E4E9;
-    color: #363636;
+    background-color: rgb(143, 211, 146);
+    color: white;
     margin-right: 100px;
 
 
@@ -27,7 +27,7 @@ margin-top: -10px;
 }
 
 .message:last-child{
-    margin-bottom: 60px;
+    margin-bottom: 80px;
 }
 
 
@@ -40,7 +40,7 @@ width: 1px;
 
 
 .mymsgbox{
-    height: calc(100vh - 125px) !important;
+    height: calc(100vh - 115px) !important;
     overflow-y: scroll;
     width: 100%;
     margin-top: 5px;

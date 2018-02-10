@@ -1,13 +1,3 @@
-<app-header></app-header>
-<div class="buffer" ></div>
-
-<div class="row" style="margin:0px; overflow-y:hidden ;height: 100% !important" >
-  <div class="col col-lg-3 hidden-xs " style="padding: 0px !important ;" ></div>
-  <div class="col col-lg-6 col-xs-12" style="padding: 0px !important ;" >
-      <chat-dialog   ></chat-dialog>
-      
-  </div>
-  <div class="col col-lg-3 hidden-xs " style="padding:0px !important;"></div>
-</div>
-
-<app-typingpad></app-typingpad>
+<div [@routerTransition]="getRouteAnimation(route)" style="height: 100vh !important">
+        <router-outlet #route="outlet"></router-outlet>
+      </div>
