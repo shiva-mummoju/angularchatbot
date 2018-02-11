@@ -1,5 +1,5 @@
 
-
+<!-- 
 <div  id="msgbox"  class="mymsgbox" >
 
 <ng-container  *ngFor="let message of messages | async">
@@ -10,23 +10,57 @@
     {{ message.content }}
   </div>
 
-</ng-container>
+</ng-container> -->
 
 
+
+  <div class="b-agent-demo" > 
+    
+<div class="b-agent-demo_result" id="resultWrapper">
+  <table class="b-agent-demo_result-table">
+    <tbody>
+      <tr>
+        <td id="result">
+            <ng-container class="mymsgs"  *ngFor="let message of messages | async">
+          <div  [ngClass]="{ 'server-response': message.sentBy === 'bot','user-request':   message.sentBy === 'user'  }" >{{message.content}}</div>
+        </ng-container>
+        </td>
+      </tr>
+    </tbody>
+    <div style="height: 180px;background-color: white;width:100%" ></div>
+  </table>
+</div>
+<div class="clearfix" ></div>
 
 </div>
 
-<div class="position: fixed !important; z-index: -1" >
+
+<div class="b-agent-demo contain "  >
+  <div class="pallete" >
+    <div class="pallete-items" (click)="sendshortmsg('What are the events being conducted this year?')">Events</div>
+    <div class="pallete-items" (click)="sendshortmsg('Sponsors')" >Sponsors</div>
+    <div class="pallete-items" (click)="sendshortmsg('Tell me about Acumen')" >About</div>
+    <div class="pallete-items" (click)="sendshortmsg('Navigation')" >Navigation</div>
+    <div class="pallete-items" (click)="sendshortmsg('Date')" >Date</div>
+    <div class="pallete-items" (click)="sendshortmsg('Venue')" >Venue</div>
+        
+  </div>
+</div>
+
+
+<div class="b-agent-demo ">
+<div class="b-agent-demo_input">
+    <form id="agentDemoForm" autocomplete="off" autocomplete="false" > 
+        <input style="display:none" type="text" name="fakeusernameremembered"/>
+        <input style="display:none" type="password" name="fakepasswordremembered"/>
+        <input type="text" name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
+         <i class="b-agent-demo_input-microphone material-icons-extended fas fa-microphone " name="btnActivateSpeechSearchMovie"   id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"   [class.myownactive]="showSearchButton" style="display: block;"></i>
+        <!-- <div class="b-agent-demo_input-microphone material-icons-extended mic-red" id="mic"></div> -->
+    </form>
+  </div>
+  </div>
+
+
+<script>
   
-  
-  <!-- <footer class="row myfooter" style="margin:0px" >
-  <div class="col col-lg-10 col-xs-10" style="padding:0px">
-  <input [(ngModel)]="formValue"  class="form-control"  (keyup.enter)="sendMessage()" type="text"></div>
-  <div class="col col-lg-2 col-xs-2" style="padding:0px" ><button (click)="sendMessage()" class="btn btn-primary" >Send</button></div>
-  </footer> -->
-
-
-
-<!-- <footer class="footer">
-  <p>this is my footer</p>
-</footer> -->
+</script>

@@ -24,19 +24,21 @@ import { AcumenComponent } from './acumen/acumen.component';
 import { CardComponent } from './card/card.component';
 import { AgmCoreModule } from '@agm/core';
 import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+// import { AngularDraggableModule } from 'angular2-draggable';
 // import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { SpeechRecognitionService } from './chat/speech-recognition.service';
 import 'hammerjs';
 // import { MaterialModule } from '@angular/material';
-import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
+// import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
-  { path: '', component: WelcomescreenComponent ,   data: { state: 'welcome' } },
-  { path: 'chatbot' , component: ChatinterfaceComponent,   data: { state: 'chatbot' }},
-  { path: 'events' , component: EventsComponent,   data: { state: 'events' }},
-  { path: 'acumen' , component: AcumenComponent,   data: { state: 'acumen' } },
-  { path: 'sponsors' ,component: SponsorsComponent,data: {state: 'sponsors'}},
-  { path: '**' , component: WelcomescreenComponent,data: {state: 'welcome'}}
+  { path: '', component: WelcomescreenComponent ,   data: { animation: { value: 'data' } } },
+  { path: 'chatbot' , component: ChatinterfaceComponent,   data: { animation: { value: 'data' } }},
+  { path: 'events' , component: EventsComponent,   data: { animation: { value: 'data' } }},
+  { path: 'acumen' , component: AcumenComponent,   data: { animation: { value: 'data' } }},
+  { path: 'sponsors' ,component: SponsorsComponent,data: { animation: { value: 'data' } }},
+  { path: '**' , component: WelcomescreenComponent,data: { animation: { value: 'data' } }}
 ]
 
 
@@ -70,12 +72,11 @@ const appRoutes: Routes = [
       apiKey: 'AIzaSyD9yvhNr1XRwdTRR37R15HF-VfKtTDP3Bo'
     }),
     AgmSnazzyInfoWindowModule,
-    MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule,
     NoopAnimationsModule,
-   
+    // AngularDraggableModule,
   ],
   providers: [
- 
+    SpeechRecognitionService
   ],
   bootstrap: [AppComponent]
 })

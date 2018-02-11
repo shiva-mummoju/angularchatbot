@@ -1,9 +1,12 @@
 .buffer{
-    height: 50px;
+    height: 56px;
     width: 100%;
 }
 
 .back{
     height: 100vh;
-    background-image: url('../../assets/bg4.jpg');
+    background-color: white;
+    position: fixed;
 }
+
+

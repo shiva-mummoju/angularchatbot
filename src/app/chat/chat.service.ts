@@ -47,9 +47,15 @@ export class ChatService implements OnInit{
   }
 
   greet(){
-    const greet = new Message(" How may I help you?",'bot');
+    const greet = new Message(" Hey there..",'bot');
     this.update(greet);
   }
+
+
+  // checkuser(){
+  //   const greet = new Message(" How may I help you?",'user');
+  //   this.update(greet);
+  // }
 
   // Sends and receives messages via DialogFlow
   converse(msg: string) {
@@ -61,6 +67,7 @@ export class ChatService implements OnInit{
                   const speech = res.result.fulfillment.speech;
                   const botMessage = new Message(speech, 'bot');
                   this.update(botMessage);
+                  this.myevent.emit();
                });
   }
 
@@ -68,6 +75,7 @@ export class ChatService implements OnInit{
 
   // Adds message to source
   update(msg: Message) {
+
     this.conversation.next([msg]);
     if( msg.sentBy === 'bot'){
       this.insound.play();
