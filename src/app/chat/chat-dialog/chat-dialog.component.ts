@@ -1,5 +1,5 @@
 import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
-import { ChatService, Message } from './../chat.service';
+
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
 import { Inject} from "@angular/core";
@@ -11,8 +11,19 @@ import { OnChanges } from '@angular/core';
 import {  OnDestroy} from '@angular/core';
 import { SpeechRecognitionService } from '../speech-recognition.service';
 
+// from service
+import { ApiAiClient } from 'api-ai-javascript';
+// import { OnInit } from '@angular/core';
+import { Output } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import{Howl,Howler} from 'howler';
 
 // import { connect } from 'tls';
+
+export class Message {
+  constructor(public content: string, public sentBy: string) {
+  }
+}
 
 
 @Component({
@@ -20,45 +31,37 @@ import { SpeechRecognitionService } from '../speech-recognition.service';
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.css'],
 })
+
+
+
 export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges {
   @ViewChild('resultWrapper') private mymsgbox: ElementRef;
 
-  messages: Observable<Message[]>;
+  // from service
+    // using howler for playing sounds
+    insound = new Howl({
+      src: ['../../../assets/in.mp3']
+    });
+   readonly token = environment.dialogflow.Acumen;
+   readonly client = new ApiAiClient({ accessToken: this.token });
+
+
+   messages: Message[] = [];
   formValue: string;
   sub: any;
   showSearchButton: boolean;
     speechData: string;
-
-  constructor(public chat: ChatService,@Inject(DOCUMENT) private document: Document,private speechRecognitionService: SpeechRecognitionService) { 
+    msgcount: number;
+  constructor(@Inject(DOCUMENT) private document: Document,private speechRecognitionService: SpeechRecognitionService) { 
     this.showSearchButton = false;
         this.speechData = "";
+        this.msgcount =0;
   }
 
   ngOnInit() {
-    // setInterval(this.pushdown,100);
-    
-    this.chat.greet();
-    // this.chat.checkuser();
-    // appends to array after each new message is added to feedSource
-    this.messages = this.chat.conversation.asObservable()
-        .scan((acc, val) => {
-          {
-            var temp = acc.concat(val);
-            // console.log("inside scan")
-            // document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
-            // document.getElementById('resultWrapper').scrollIntoView(false);
-           
-            this.newpushdown(result => {});
-            return temp;
-            
-          }
-        }
-       );
-       this.scrollToBottom();
-      //  this.sub = this.chat.geteventemitter().subscribe((item)=> this.diffpushdown());
+    const userMessage = new Message('Hey there..', 'bot');
+    this.messages.push(userMessage);
   }
-
-  
   ngOnDestroy() {
     this.speechRecognitionService.DestroySpeechObject();
 }
@@ -104,27 +107,21 @@ ngOnChanges(){
 }
 
 sendshortmsg(msg){
-this.chat.converse(msg);
+this.converse(msg);
 this.diffpushdown();
 }
 
   sendMessage() {
-    this.chat.converse(this.formValue);
+    this.converse(this.formValue);
     this.formValue = '';
+    this.diffpushdown();
     document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
-    // document.getElementById('resultWrapper').scrollIntoView(false);
-    // console.log('scroll height  = ' + document.getElementById('resultWrapper').scrollHeight);
-    // var mydiv = document.getElementById('resultWrapper');
-    // mydiv.scrollTop = mydiv.scrollHeight - mydiv.clientHeight;
   
   }
 
   scrollToBottom():void {
       try{
         this.mymsgbox.nativeElement.scrollTop = this.mymsgbox.nativeElement.scrollHeight;
-        // var mydiv = document.getElementById('resultWrapper');
-        // mydiv.scrollTop = mydiv.scrollHeight - mydiv.clientHeight;
-        // document.getElementById('resultWrapper').scrollIntoView(false);
       }catch(err){}
   }
 
@@ -136,12 +133,45 @@ this.diffpushdown();
 
   newpushdown(callback){
    
-     setTimeout(() => callback(document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight), 10); 
+     setTimeout(() => callback(document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight), 125); 
     
   }
   diffpushdown(){
     document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
     // console.log('diffPushdown called in chat');
   }
+
+
+
+
+  converse(msg: string) {
+    const userMessage = new Message(msg, 'user');
+    this.update(userMessage);
+
+    return this.client.textRequest(msg)
+               .then(res => {
+                  const speech = res.result.fulfillment.speech;
+                  const botMessage = new Message(speech, 'bot');
+                  this.update(botMessage);
+                  // this.myevent.emit();
+               });
+  }
+  // Adds message to source
+  update(msg: Message) {
+    this.newpushdown(result => {}); 
+    this.msgcount = this.msgcount + 1;
+    if(this.msgcount > 250){
+      this.messages.shift();
+      this.msgcount = this.msgcount - 1;
+    }
+    this.messages.push(msg);
+    if( msg.sentBy == 'bot'){
+      this.insound.play();
+    } 
+
+    this.formValue = '';
+    this.diffpushdown();
+  }
+
  
   }

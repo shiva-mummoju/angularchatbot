@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 
 import { ChatModule } from './chat/chat.module';
 import { HeaderComponent } from './header/header.component';
-import { TypingpadComponent } from './typingpad/typingpad.component';
 import { FormsModule } from '@angular/forms';
 import { ChatinterfaceComponent } from './chatinterface/chatinterface.component';
 import { WelcomescreenComponent } from './welcomescreen/welcomescreen.component';
@@ -47,7 +46,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    TypingpadComponent,
     ChatinterfaceComponent,
     WelcomescreenComponent,
     EventsComponent,

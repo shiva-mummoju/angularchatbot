@@ -355,7 +355,7 @@ body {
  
   .mymsgs{
     /* position: relative; */
-    animation: fadein .3s forwards;
+    animation: fadein .5s forwards;
   }
   .mymsgs:last-child{
 margin-bottom: 120px;

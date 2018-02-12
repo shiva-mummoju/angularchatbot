@@ -22,11 +22,11 @@
       <tr>
         <td id="result">
           <div class="mymsgs">
-            <ng-container class="mymsgs"  *ngFor="let message of messages | async">
-              
-          <div  [ngClass]="{ 'server-response': message.sentBy === 'bot','user-request':   message.sentBy === 'user'  }" >{{message.content}}</div>
+            <div   *ngFor=" let message of messages">
+                <!-- {{message.sentBy}} -->
+          <div  [ngClass]="{ 'server-response': message.sentBy == 'bot','user-request':   message.sentBy == 'user'  }" >{{message.content}}</div>
           
-        </ng-container>
+            </div>
       </div>
         </td>
       </tr>
