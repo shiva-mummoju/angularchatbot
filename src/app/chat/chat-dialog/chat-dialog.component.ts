@@ -45,17 +45,17 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges {
           {
             var temp = acc.concat(val);
             // console.log("inside scan")
-            document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
+            // document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
             // document.getElementById('resultWrapper').scrollIntoView(false);
-            var mydiv = document.getElementById('resultWrapper');
-            mydiv.scrollTop = mydiv.scrollHeight - mydiv.clientHeight;
-
+           
+            this.newpushdown(result => {});
             return temp;
+            
           }
         }
        );
        this.scrollToBottom();
-       this.sub = this.chat.geteventemitter().subscribe((item)=> this.diffpushdown());
+      //  this.sub = this.chat.geteventemitter().subscribe((item)=> this.diffpushdown());
   }
 
   
@@ -105,7 +105,7 @@ ngOnChanges(){
 
 sendshortmsg(msg){
 this.chat.converse(msg);
-
+this.diffpushdown();
 }
 
   sendMessage() {
@@ -129,16 +129,18 @@ this.chat.converse(msg);
   }
 
   pushdown(){
-    // document.getElementById('resultWrapper').scrollIntoView();
-    // var mydiv = document.getElementById('resultWrapper');
-    // mydiv.scrollTop = mydiv.scrollHeight - mydiv.clientHeight;
+
+    document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
     // console.log('Pushdown called in chat');
+  }
+
+  newpushdown(callback){
+   
+     setTimeout(() => callback(document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight), 10); 
+    
   }
   diffpushdown(){
     document.getElementById('resultWrapper').scrollTop = document.getElementById('resultWrapper').scrollHeight;
-    // var mydiv = document.getElementById('resultWrapper');
-    // mydiv.scrollTop = mydiv.scrollHeight - mydiv.clientHeight;
-    // document.getElementById('resultWrapper').scrollIntoView(false);
     // console.log('diffPushdown called in chat');
   }
  

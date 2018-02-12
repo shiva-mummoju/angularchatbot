@@ -40,7 +40,7 @@ width: 1px;
 
 
 .mymsgbox{
-    height: calc(100vh - 115px) !important;
+    height: calc(100% - 180px) !important;
     overflow-y: scroll;
     width: 100%;
     margin-top: 5px;
@@ -97,33 +97,39 @@ body {
   .b-agent-demo .user-request {
     background-color: #eae3c7;
     float: right;
+    /* display: flex; */
+    /* justify-content: flex-end; */
     margin-right: 15px;
-    margin-top: 5px;
+    margin-bottom: auto;
+    margin-top: 10px;
     margin-left: 15px;
     border-radius: 30px;
     /* border: 1px solid #eae3c7; */
-    
+    clear: both;
   }
   .b-agent-demo .server-response {
     color: black;
     background-color: white;
+    /* align-content: flex-start; */
     float: left;
-    
-    margin-top: 3px;
-    margin-bottom: 4px;
+    margin-top: 10px;
+    margin-bottom: auto;
     margin-right: 10px;
     margin-left: 15px;
     border-radius: 35px;
     border: 1px solid #c7bfbf;
+    clear: both;
   }
+  /* url('../../../assets/head.png'); */
+  
   .b-agent-demo #resultWrapper {
     overflow-y: scroll;
     background: white;
     position: fixed;
     top: 50px;
-    bottom: 55px;
+    bottom: 125px;
     width: 100%;
-    height: calc(100vh - 105px);
+    height: calc(100% - 180px) !important ;
     animation: fadein .3s forwards;
     
   }
@@ -195,12 +201,14 @@ body {
     border: 1px solid #c7bfbf;
   }
   .b-agent-demo .b-agent-demo_result-table {
-    height: calc(100vh - 105px);
+    height: 100%;
     /* min-height: 100%; */
     width: 100%;
     /* width: 100%;  */
     word-wrap:break-word;
     table-layout: fixed;
+    /* margin-top: 0px; */
+    /* margin-bottom: 120px; */
   }
   .b-agent-demo .b-agent-demo_result-table td {
     vertical-align: top;
@@ -348,15 +356,19 @@ body {
   .mymsgs{
     /* position: relative; */
     animation: fadein .3s forwards;
-  }/*
+  }
   .mymsgs:last-child{
-margin-bottom: 100px;
-  } */
+margin-bottom: 120px;
+  } 
 
   #result{
     animation: fadein .3s forwards;
+    overflow-y: scroll;
   }
   
+  /* #result:last-child{
+    margin-bottom: 100px;
+  } */
   ::-webkit-scrollbar{
     width: 1px;
   }

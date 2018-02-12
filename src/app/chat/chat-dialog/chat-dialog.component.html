@@ -17,20 +17,29 @@
   <div class="b-agent-demo" > 
     
 <div class="b-agent-demo_result" id="resultWrapper">
-  <table class="b-agent-demo_result-table">
+  <table class="b-agent-demo_result-table" id="mytable" >
     <tbody>
       <tr>
         <td id="result">
+          <div class="mymsgs">
             <ng-container class="mymsgs"  *ngFor="let message of messages | async">
+              
           <div  [ngClass]="{ 'server-response': message.sentBy === 'bot','user-request':   message.sentBy === 'user'  }" >{{message.content}}</div>
+          
         </ng-container>
+      </div>
         </td>
       </tr>
+      <!-- <div style="height: 120px;background-color: red;width:100%" ></div> -->
     </tbody>
-    <div style="height: 180px;background-color: white;width:100%" ></div>
+    
   </table>
+  
+  
 </div>
+
 <div class="clearfix" ></div>
+
 
 </div>
 
@@ -53,7 +62,7 @@
     <form id="agentDemoForm" autocomplete="off" autocomplete="false" > 
         <input style="display:none" type="text" name="fakeusernameremembered"/>
         <input style="display:none" type="password" name="fakepasswordremembered"/>
-        <input type="text" name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
+        <input type="text" name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  (click)="pushdown()"  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
          <i class="b-agent-demo_input-microphone material-icons-extended fas fa-microphone " name="btnActivateSpeechSearchMovie"   id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"   [class.myownactive]="showSearchButton" style="display: block;"></i>
         <!-- <div class="b-agent-demo_input-microphone material-icons-extended mic-red" id="mic"></div> -->
     </form>

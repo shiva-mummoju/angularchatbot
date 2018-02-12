@@ -67,7 +67,7 @@ export class ChatService implements OnInit{
                   const speech = res.result.fulfillment.speech;
                   const botMessage = new Message(speech, 'bot');
                   this.update(botMessage);
-                  this.myevent.emit();
+                  // this.myevent.emit();
                });
   }
 
@@ -77,18 +77,21 @@ export class ChatService implements OnInit{
   update(msg: Message) {
 
     this.conversation.next([msg]);
+    
     if( msg.sentBy === 'bot'){
       this.insound.play();
     }
    
     // console.log('About to emit from service');
-    this.myevent.emit();
+    // this.myevent.emit();
+
+
     
   }
 
-  geteventemitter(){
-   return  this.myevent;
-  }
+  // geteventemitter(){
+  //  return  this.myevent;
+  // }
 
 
 }
