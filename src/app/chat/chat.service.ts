@@ -20,41 +20,42 @@
 // @Injectable()
 // export class ChatService implements OnInit{
 
-  // using howler for playing sounds
-  //  insound = new Howl({
-  //    src: ['../../assets/in.mp3']
-  //  });
-  // readonly token = environment.dialogflow.Acumen;
-  // readonly client = new ApiAiClient({ accessToken: this.token });
-  // conversation = new BehaviorSubject<Message[]>([]);
-  // constructor() {}
-  // ngOnInit(){
-  // }
+//   using howler for playing sounds
+//    insound = new Howl({
+//      src: ['../../assets/in.mp3']
+//    });
+//   readonly token = environment.dialogflow.Acumen;
+//   readonly client = new ApiAiClient({ accessToken: this.token });
+//   conversation = new BehaviorSubject<Message[]>([]);
+//   constructor() {}
+//   ngOnInit(){
+//   }
 
-  // greet(){
-  //   const greet = new Message(" Hey there..",'bot');
-  //   this.update(greet);
-  // }
-  // Sends and receives messages via DialogFlow
-  // converse(msg: string) {
-  //   const userMessage = new Message(msg, 'user');
-  //   this.update(userMessage);
+//   greet(){
+//     const greet = new Message(" Hey there..",'bot');
+//     this.update(greet);
+//   }
+//   Sends and receives messages via DialogFlow
+//   converse(msg: string) {
+//     const userMessage = new Message(msg, 'user');
+//     this.update(userMessage);
 
-  //   return this.client.textRequest(msg)
-  //              .then(res => {
-  //                 const speech = res.result.fulfillment.speech;
-  //                 const botMessage = new Message(speech, 'bot');
-  //                 this.update(botMessage);
-  //                 // this.myevent.emit();
-  //              });
-  // }
-  // // Adds message to source
-  // update(msg: Message) {
+//     return this.client.textRequest(msg)
+//                .then(res => {
+//                   const speech = res.result.fulfillment.speech;
+//                   const botMessage = new Message(speech, 'bot');
+//                   this.update(botMessage);
+//                   // this.myevent.emit();
+//                });
+//   }
+//   // Adds message to source
+//   update(msg: Message) {
 
-  //   this.conversation.next([msg]);
+//     this.conversation.next([msg]);
     
-  //   if( msg.sentBy === 'bot'){
-  //     this.insound.play();
-  //   } 
-  // }
+    
+//     if( msg.sentBy === 'bot'){
+//       this.insound.play();
+//     } 
+//   }
 // }

@@ -160,7 +160,7 @@ this.diffpushdown();
   update(msg: Message) {
     this.newpushdown(result => {}); 
     this.msgcount = this.msgcount + 1;
-    if(this.msgcount > 250){
+    if(this.msgcount > 20){
       this.messages.shift();
       this.msgcount = this.msgcount - 1;
     }
