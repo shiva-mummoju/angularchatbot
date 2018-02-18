@@ -5,7 +5,7 @@
     position: relative;
     font-weight: bold;
 
-    animation: fadein .3s forwards;
+    /* animation: fadein .3s forwards; */
 }
 .message.to {
     background-color: #2095FE;
@@ -71,30 +71,30 @@ body {
     width: 100%;
     /* height: auto; */
     color: #2b313f;
-    font-size: 16px;
+    font-size: 14px;
     /* overflow: scroll; */
     /* position: fixed; */
     /* top: 50px; */
     /* bottom: 55px; */
     /* left: 0; */
     /* right: 0; */
-    animation: fadein .3s forwards;
+    /* animation: fadein .3s forwards; */
   }
-  .b-agent-demo .user-request,
-  .b-agent-demo .server-response {
+   .user-request,
+   .server-response {
     display: inline-block;
     padding: 10px 25px;
-    animation: fadein .3s forwards;
+    /* animation: fadein .3s forwards; */
     max-width: 80%;
     margin-bottom: 5px;
-    font-size: 16px;
+    font-size: 14px;
     clear: both;
   }
-  .b-agent-demo .user-request.server-response-error,
-  .b-agent-demo .server-response.server-response-error {
+   .user-request.server-response-error,
+   .server-response.server-response-error {
     background-color: #F76949;
   }
-  .b-agent-demo .user-request {
+   .user-request {
     background-color: #eae3c7;
     float: right;
     /* display: flex; */
@@ -107,7 +107,7 @@ body {
     /* border: 1px solid #eae3c7; */
     clear: both;
   }
-  .b-agent-demo .server-response {
+   .server-response {
     color: black;
     background-color: white;
     /* align-content: flex-start; */
@@ -130,7 +130,7 @@ body {
     bottom: 125px;
     width: 100%;
     height: calc(100% - 180px) !important ;
-    animation: fadein .3s forwards;
+    /* animation: fadein .3s forwards; */
     
   }
 
@@ -138,15 +138,15 @@ body {
   .b-agent-demo .pallete{
     /* overflow-y: hidden; */
     overflow-x: scroll;
-    background-color: white;
+    background-color: transparent;
     white-space: nowrap;
     position: fixed;
-    bottom:30px;
+    bottom:47px;
     left: 0;
     right: 0;
     z-index: 10;
     -webkit-overflow-scrolling: touch;
-    height: 90px;
+    height: 65px;
     /* top: 300; */
     
    
@@ -166,31 +166,22 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    height: 50px;
+    /* height: 55px; */
   }
 
-  .pallete li{
-    float: left;
-  }
-  .pallete li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
  
   .b-agent-demo .pallete .pallete-items{
     
     display: inline-block;
     color: black;
     background-color: white;
-    padding: 10px 25px;
-    animation: fadein .3s forwards;
+    padding: 10px 25px 10px 25px;
+    /* animation: fadein .3s forwards; */
+    z-index: 325;
     
-    margin-bottom: 5px;
+    /* margin-bottom: 0px; */
     font-size: 16px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
     /* margin-right: 5px; */
     margin-left: 7px;
     border-radius: 35px;
@@ -355,14 +346,14 @@ body {
  
   .mymsgs{
     /* position: relative; */
-    animation: fadein .5s forwards;
+    /* animation: fadein .5s forwards; */
   }
   .mymsgs:last-child{
 margin-bottom: 120px;
   } 
 
   #result{
-    animation: fadein .3s forwards;
+    /* animation: fadein .3s forwards; */
     overflow-y: scroll;
   }
   
@@ -375,4 +366,8 @@ margin-bottom: 120px;
 
   .myownactive{
     color: red !important;
+  }
+
+  #chatdialogue:last-child{
+    animation: fadein .3s forwards;
   }

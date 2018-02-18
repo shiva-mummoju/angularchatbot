@@ -1,4 +1,4 @@
-import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate, ViewEncapsulation } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
@@ -30,6 +30,7 @@ export class Message {
   selector: 'chat-dialog',
   templateUrl: './chat-dialog.component.html',
   styleUrls: ['./chat-dialog.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 
 
@@ -46,7 +47,7 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges {
    readonly client = new ApiAiClient({ accessToken: this.token });
 
 
-   messages: Message[] = [];
+  //  messages: Message[] = [];
   formValue: string;
   sub: any;
   showSearchButton: boolean;
@@ -60,7 +61,7 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges {
 
   ngOnInit() {
     const userMessage = new Message('Hey there..', 'bot');
-    this.messages.push(userMessage);
+    // this.messages.push(userMessage);
   }
   ngOnDestroy() {
     this.speechRecognitionService.DestroySpeechObject();
@@ -159,12 +160,19 @@ this.diffpushdown();
   // Adds message to source
   update(msg: Message) {
     this.newpushdown(result => {}); 
-    this.msgcount = this.msgcount + 1;
-    if(this.msgcount > 20){
-      this.messages.shift();
-      this.msgcount = this.msgcount - 1;
+    // this.msgcount = this.msgcount + 1;
+    // if(this.msgcount > 20){
+    //   this.messages.shift();
+    //   this.msgcount = this.msgcount - 1;
+    // }
+    // this.messages.push(msg);
+    if(msg.sentBy == 'bot'){
+
+    document.getElementById('chatdialogue').innerHTML = document.getElementById('chatdialogue').innerHTML + '<div class="server-response">' + msg.content + '</div>';
     }
-    this.messages.push(msg);
+    if(msg.sentBy == 'user'){
+      document.getElementById('chatdialogue').innerHTML = document.getElementById('chatdialogue').innerHTML + '<div class="user-request">' + msg.content + '</div>';
+    }
     if( msg.sentBy == 'bot'){
       this.insound.play();
     } 

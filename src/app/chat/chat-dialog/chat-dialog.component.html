@@ -22,11 +22,15 @@
       <tr>
         <td id="result">
           <div class="mymsgs">
-            <div   *ngFor=" let message of messages">
+            <div  id="chatdialogue" >
                 <!-- {{message.sentBy}} -->
-          <div  [ngClass]="{ 'server-response': message.sentBy == 'bot','user-request':   message.sentBy == 'user'  }" >{{message.content}}</div>
+          <!-- <div  [ngClass]="{ 'server-response': message.sentBy == 'bot','user-request':   message.sentBy == 'user'  }" >{{message.content}}</div> -->
           
+            <!-- </div> -->
+            <div class="server-response">
+                Hey there..
             </div>
+      </div>
       </div>
         </td>
       </tr>
