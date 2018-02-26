@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 
@@ -71,6 +72,7 @@ const appRoutes: Routes = [
     }),
     AgmSnazzyInfoWindowModule,
     NoopAnimationsModule,
+    NgbModule.forRoot(),
     // AngularDraggableModule,
   ],
   providers: [

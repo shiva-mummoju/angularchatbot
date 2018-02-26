@@ -22,7 +22,9 @@
         "styles.css",
         "../node_modules/snazzy-info-window/dist/snazzy-info-window.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
