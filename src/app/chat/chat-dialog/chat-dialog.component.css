@@ -83,11 +83,11 @@ body {
    .user-request,
    .server-response {
     display: inline-block;
-    padding: 10px 25px;
+    padding: 10px 10px 10px 15px;
     /* animation: fadein .3s forwards; */
     max-width: 80%;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 13px;
     clear: both;
   }
    .user-request.server-response-error,
@@ -420,7 +420,7 @@ body {
     z-index: 10;
     -webkit-overflow-scrolling: touch;
     margin: auto;
-    margin-bottom: -15px  ;
+    /* margin-bottom: -15px  ; */
     padding: 0px;
     height:   auto;
     width: 100%;
@@ -459,7 +459,7 @@ body {
     margin: 0px;
     max-width: 100%;
     padding: 0px;
-    height: 207px;
+    height: 200px;
     border-radius: 0px;
     /* white-space: nowrap; */
     /* display: inline-block; */
