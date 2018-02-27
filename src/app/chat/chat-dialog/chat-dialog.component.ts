@@ -268,7 +268,7 @@ this.diffpushdown();
       
 
         if(msg.content.includes('https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=')){
-          hook.innerHTML = hook.innerHTML + '<div class="server-response">' + '<a href="' + 'https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=">' + 'Click here for navigation' + '</a>' + '</div>';
+          hook.innerHTML = hook.innerHTML + '<div class="server-response">' + '<i class="fas fa-map-marker-alt"></i><a href="' + 'https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=">' + '  Click here for navigation' + '</a>' + '</div>';
           this.addall();
           this.insound.play();
           return;
@@ -432,4 +432,30 @@ codeauction_sendmsg(){
    this.converse('Tell me about Time Is Up');
  }
 
+
+ sliderforteam(){
+  var hook = document.getElementById('chatdialogue');
+  hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Hey tell me about the developer team for Acumen CS Fest 2k18' + '</div>';
+  this.diffpushdown();
+  setTimeout(() => {
+    hook.innerHTML = hook.innerHTML + '<div class="event-pallete"><div class=" container event-pallete-item"  ><img  style="height: 150px;"  src="../../../assets/nodp.jpg" alt=""><div class="text">Abhinav</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/shiva.jpg" alt=""><div class="text">Shiva</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Sandilya</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/somesh.jpg" alt=""><div class="text">Somesh</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Uttej</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Manohar</div></div></div>';
+    this.insound.play();
+  this.newpushdown(result => {});
+  this.addall();
+  }, 1500);
+  
+}
+
+
+ sliderforcontact(){
+  var hook = document.getElementById('chatdialogue');
+  hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
+  this.diffpushdown();
+  setTimeout(() => {
+    hook.innerHTML = hook.innerHTML + '<div class="event-pallete"><div class=" container event-pallete-item"  ><img  style="height: 150px;"  src="../../../assets/v.jpg" alt=""><div class="text">Vipanchith</div><div class="desc" style="font-size: 14px;" > <i class="fas fa-phone fa-rotate-90 " ></i><a href="tel:9030062281"> 9030062281 </a></div> </div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Sai Krishna</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/manasa.jpg" alt=""><div class="text">Manasa</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/honey.jpg" alt=""><div class="text">Honey</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Shashi Sir</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Prof. Aadilakshmi</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div></div>';
+    this.insound.play();
+  this.newpushdown(result => {});
+  this.addall();
+  }, 1500);
+ }
   }

@@ -420,7 +420,7 @@ body {
     z-index: 10;
     -webkit-overflow-scrolling: touch;
     margin: auto;
-    /* margin-bottom: -15px  ; */
+    margin-bottom: 0px  ;
     padding: 0px;
     height:   auto;
     width: 100%;
