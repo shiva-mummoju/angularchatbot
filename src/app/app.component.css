@@ -7,3 +7,18 @@
 app-welcomescreen{
     background-color: black;
 }
+
+@keyframes fadein_welcome{
+    from{
+        opacity: 0;
+        display: none;
+    }
+    to{
+      display: block;
+        opacity: 1;
+    }
+}
+
+app-welcomescreen{
+    animation: fadein_welcome .7s forwards;
+}

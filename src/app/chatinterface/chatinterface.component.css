@@ -11,3 +11,20 @@
 }
 
 
+@keyframes fadein_chat{
+    from{
+        opacity: 0;
+        display: none;
+    }
+    to{
+      display: block;
+        opacity: 1;
+    }
+}
+
+chat-dialog{
+    animation: fadein_chat .7s forwards;
+}
+app-header{
+    animation: fadein .7s forwards;
+}

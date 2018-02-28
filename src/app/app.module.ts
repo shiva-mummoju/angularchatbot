@@ -12,18 +12,18 @@ import { FormsModule } from '@angular/forms';
 import { ChatinterfaceComponent } from './chatinterface/chatinterface.component';
 import { WelcomescreenComponent } from './welcomescreen/welcomescreen.component';
 import { RouterModule } from '@angular/router';
-import { EventsComponent } from './events/events.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
-import { AboutusComponent } from './aboutus/aboutus.component';
-import { LoginComponent } from './login/login.component';
-import { NavigationComponent } from './navigation/navigation.component';
+// import { EventsComponent } from './events/events.component';
+// import { EventDetailComponent } from './event-detail/event-detail.component';
+// import { AboutusComponent } from './aboutus/aboutus.component';
+// import { LoginComponent } from './login/login.component';
+// import { NavigationComponent } from './navigation/navigation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SponsorsComponent } from './sponsors/sponsors.component';
-import { AcumenComponent } from './acumen/acumen.component';
+// import { SponsorsComponent } from './sponsors/sponsors.component';
+// import { AcumenComponent } from './acumen/acumen.component';
 import { CardComponent } from './card/card.component';
 import { AgmCoreModule } from '@agm/core';
-import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
+// import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 // import { AngularDraggableModule } from 'angular2-draggable';
 // import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { SpeechRecognitionService } from './chat/speech-recognition.service';
@@ -35,9 +35,9 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 const appRoutes: Routes = [
   { path: '', component: WelcomescreenComponent ,   data: { animation: { value: 'data' } } },
   { path: 'chatbot' , component: ChatinterfaceComponent,   data: { animation: { value: 'data' } }},
-  { path: 'events' , component: EventsComponent,   data: { animation: { value: 'data' } }},
-  { path: 'acumen' , component: AcumenComponent,   data: { animation: { value: 'data' } }},
-  { path: 'sponsors' ,component: SponsorsComponent,data: { animation: { value: 'data' } }},
+  // { path: 'events' , component: EventsComponent,   data: { animation: { value: 'data' } }},
+  // { path: 'acumen' , component: AcumenComponent,   data: { animation: { value: 'data' } }},
+  // { path: 'sponsors' ,component: SponsorsComponent,data: { animation: { value: 'data' } }},
   { path: '**' , component: WelcomescreenComponent,data: { animation: { value: 'data' } }}
 ]
 
@@ -49,13 +49,13 @@ const appRoutes: Routes = [
     HeaderComponent,
     ChatinterfaceComponent,
     WelcomescreenComponent,
-    EventsComponent,
-    EventDetailComponent,
-    AboutusComponent,
-    LoginComponent,
-    NavigationComponent,
-    SponsorsComponent,
-    AcumenComponent,
+    // EventsComponent,
+    // EventDetailComponent,
+    // AboutusComponent,
+    // LoginComponent,
+    // NavigationComponent,
+    // SponsorsComponent,
+    // AcumenComponent,
     CardComponent,
    
     
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD9yvhNr1XRwdTRR37R15HF-VfKtTDP3Bo'
     }),
-    AgmSnazzyInfoWindowModule,
+    // AgmSnazzyInfoWindowModule,
     NoopAnimationsModule,
     NgbModule.forRoot(),
     // AngularDraggableModule,

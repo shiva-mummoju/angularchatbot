@@ -65,6 +65,7 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges,Af
   }
 
   ngOnInit() {
+    this.insound.play();
     const userMessage = new Message('Hey there..', 'bot');
     // this.messages.push(userMessage);
     
@@ -184,7 +185,8 @@ this.diffpushdown();
       
       var paper_pattern = '[paper_presentation]';
       if(msg.content.includes(paper_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class=" separateimg"  src="../../../assets/poster.jpeg" >';
+        
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -192,7 +194,7 @@ this.diffpushdown();
       // poster presentation
       var poster_pattern = '[poster_presentation]';
       if(msg.content.includes(poster_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -200,7 +202,7 @@ this.diffpushdown();
       // opc
       var opc_pattern = '[online_programming_contest]';
       if(msg.content.includes(opc_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -208,7 +210,7 @@ this.diffpushdown();
       // hackathon
       var hackathon_pattern = '[hackathon]';
       if(msg.content.includes(hackathon_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -216,7 +218,7 @@ this.diffpushdown();
       // earn your time
       var earnyourtime_pattern = '[earn_your_time]';
       if(msg.content.includes(earnyourtime_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/earnyourtime1.png" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/earnyourtime1.png" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -224,7 +226,7 @@ this.diffpushdown();
       // time is up
       var timeisup_pattern = '[time_is_up]';
       if(msg.content.includes(timeisup_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/timesup.png" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/timesup.png" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -232,7 +234,7 @@ this.diffpushdown();
       // brick the code 
       var brick_pattern = '[brick_the_code]';
       if(msg.content.includes(brick_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/brickthecode.png" >';
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/brickthecode.png" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -240,7 +242,7 @@ this.diffpushdown();
       // crack it 
       var crack_pattern = '[crack_it]';
       if(msg.content.includes(crack_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img src="../../../assets/crackit.png" >';
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/crackit.png" >';
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -442,7 +444,7 @@ codeauction_sendmsg(){
     this.insound.play();
   this.newpushdown(result => {});
   this.addall();
-  }, 1500);
+  }, 1000);
   
 }
 
@@ -456,6 +458,6 @@ codeauction_sendmsg(){
     this.insound.play();
   this.newpushdown(result => {});
   this.addall();
-  }, 1500);
+  }, 1000);
  }
   }
