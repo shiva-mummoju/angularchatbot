@@ -31,14 +31,17 @@ import 'hammerjs';
 // import { MaterialModule } from '@angular/material';
 // import { MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressBarModule, MatProgressSpinnerModule, MatRadioModule, MatRippleModule, MatSelectModule, MatSidenavModule, MatSliderModule, MatSlideToggleModule, MatSnackBarModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { TitleComponent } from './title/title.component';
+import { CsfestComponent } from './csfest/csfest.component';
 
 const appRoutes: Routes = [
-  { path: '', component: WelcomescreenComponent ,   data: { animation: { value: 'data' } } },
-  { path: 'chatbot' , component: ChatinterfaceComponent,   data: { animation: { value: 'data' } }},
+  { path: '', component: TitleComponent ,   data: { animation: { value: 'data' } } },
+  { path: 'csfest', component: CsfestComponent , data:{ animation: { value: 'data' } } },
+  { path: 'venus' , component: ChatinterfaceComponent,   data: { animation: { value: 'data' } }},
   // { path: 'events' , component: EventsComponent,   data: { animation: { value: 'data' } }},
   // { path: 'acumen' , component: AcumenComponent,   data: { animation: { value: 'data' } }},
   // { path: 'sponsors' ,component: SponsorsComponent,data: { animation: { value: 'data' } }},
-  { path: '**' , component: WelcomescreenComponent,data: { animation: { value: 'data' } }}
+  { path: '**' , component: TitleComponent , data: { animation: { value: 'data' } }}
 ]
 
 
@@ -57,6 +60,8 @@ const appRoutes: Routes = [
     // SponsorsComponent,
     // AcumenComponent,
     CardComponent,
+    TitleComponent,
+    CsfestComponent,
    
     
   ],

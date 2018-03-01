@@ -1,0 +1,22 @@
+  
+@keyframes title{
+    from{
+        opacity: 0;
+        display: none;
+    }
+    to{
+      display: block;
+        opacity: 1;
+    }
+}
+
+
+.centered {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    animation: title .7s forwards;
+  }
+

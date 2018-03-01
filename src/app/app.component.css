@@ -22,3 +22,15 @@ app-welcomescreen{
 app-welcomescreen{
     animation: fadein_welcome .7s forwards;
 }
+
+app-title{
+    animation: fadein_welcome .7s forwards;
+}
+
+app-csfest{
+    animation: fadein_welcome .7s forwards;
+}
+
+
+
+

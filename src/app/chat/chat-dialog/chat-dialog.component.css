@@ -69,7 +69,7 @@ body {
   }
   .b-agent-demo {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-weight: normal;
     width: 100%;
     /* height: auto; */
     color: #2b313f;
@@ -97,15 +97,16 @@ body {
     background-color: #F76949;
   }
    .user-request {
-    background-color: #eae3c7;
+    background-color: #ba101a;
     float: right;
+    color: white;
     /* display: flex; */
     /* justify-content: flex-end; */
     margin-right: 15px;
     margin-bottom: auto;
     margin-top: 10px;
     margin-left: 15px;
-    border-radius: 30px;
+    border-radius: 20px 20px 0px 20px;
     /* border: 1px solid #eae3c7; */
     clear: both;
   }
@@ -118,8 +119,8 @@ body {
     margin-bottom: auto;
     margin-right: 10px;
     margin-left: 15px;
-    border-radius: 35px;
-    border: 1px solid #c7bfbf;
+    border-radius:  0px 20px 20px 20px;
+    /* border: 1px solid #c7bfbf; */
     clear: both;
     /* animation: fadein .3s forwards; */
   }
@@ -128,9 +129,11 @@ body {
 
   .server-response:last-child{
     animation: fadein .6s forwards;
+    margin-bottom: 5px;
   }
   .user-request:last-child{
     animation: fadein .5s forwards;
+    margin-bottom: 5px;
   }
 
 
@@ -139,9 +142,9 @@ body {
     background: white;
     position: fixed;
     top: 50px;
-    bottom: 125px;
+    bottom: 100px;
     width: 100%;
-    height: calc(100% - 180px) !important ;
+    height: calc(100% - 175px) !important ;
     /* animation: fadein .3s forwards; */
     
   }
@@ -153,12 +156,13 @@ body {
     background-color: transparent;
     white-space: nowrap;
     position: fixed;
-    bottom:47px;
+    bottom:55px;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: -10;
+    margin-bottom: 0px;
     -webkit-overflow-scrolling: touch;
-    height: 65px;
+    height: 70px;
     /* top: 300; */
     
    
@@ -185,23 +189,24 @@ body {
   .b-agent-demo .pallete .pallete-items{
     
     display: inline-block;
-    color: black;
-    background-color: white;
-    padding: 10px 25px 10px 25px;
+    color: white;
+    text-transform: capitalize;
+    background-color: #ba101a;
+    padding: 10px 10px 10px 10px;
     /* animation: fadein .3s forwards; */
-    z-index: 325;
+    z-index: -10;
     cursor: pointer;
-    /* margin-bottom: 0px; */
-    font-size: 16px;
-    /* margin-top: 5px; */
-    /* margin-right: 5px; */
-    margin-left: 7px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-right: 0px;
+    margin-left: 5px;
     border-radius: 35px;
     box-shadow: 0px 6px 4px 0px #DDDDDD;
 -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD;
 -moz-box-shadow: 0px 6px 4px 0px #DDDDDD;
 -o-box-shadow: 0px 6px 4px 0px #DDDDDD;
-    border: 1px solid #c7bfbf;
+    /* border: 1px solid #c7bfbf; */
     animation: fadein .3s forwards;
   }
   .b-agent-demo .b-agent-demo_result-table {
@@ -283,15 +288,19 @@ body {
     position: fixed;
     bottom: 0;
     height: 55px;
-    border-top: 1px solid lightgray;
+    /* border-top: 1px solid lightgray; */
     background-color: white;
     width: 100%;
+    z-index: 9999;
     overflow: hidden;
+    margin-bottom: 10px;
+    /* padding-left: 10px */
   }
   .b-agent-demo #agentDemoForm {
     display: block;
-    margin-left: 15px;
+    margin-left: 10px;
     margin-right: 55px;
+    margin-bottom: 5px;
   }
   .b-agent-demo #query {
     width: 100%;
@@ -299,7 +308,7 @@ body {
     font-size: 16px;
     font-weight: 300;
     margin: 0;
-    height: 55px;
+    height: 50px;
   }
   .b-agent-demo #query:focus {
     outline: none;
@@ -309,19 +318,21 @@ body {
     display: none;
     position: absolute;
     font-size: 20px;
-    width: 54px;
-    height: 54px;
-    right: 0;
-    bottom: 0;
+    height: 50px;
+    width: 50px;
+    right: 2px;
+    bottom: 3px;
     cursor: pointer;
     text-align: center;
     /* line-height: 30px; */
     line-height: 54px;
     background: white;
-    color: #B7BBC4;
+    z-index: 1000;
+    /* margin-top: -3px; */
+    /* color: #B7BBC4; */
   }
   .b-agent-demo .b-agent-demo_input-microphone.active {
-    color: #F76949;
+    color: yellow;
   }
   .b-agent-demo .b-agent-demo_powered_by {
     position: fixed;
@@ -411,14 +422,14 @@ body {
   } */
 
   #chatdialogue .separateimg{
-    margin: 10px 30px 00px 15px;
-    max-width:  60%;
+    margin: 10px 30px -5px 15px;
+    max-width:  80%;
     padding: 10px 10px 10px 10px;
     /* color: black; */
     background-color: white;
     /* animation: fadein .6s forwards; */
-    border-radius: 15px;
-    border: 1px solid #c7bfbf;
+    border-radius: 0px 20px 20px 20px;
+    /* border: 1px solid #c7bfbf; */
     
   }
 
@@ -437,21 +448,24 @@ body {
     z-index: 10;
     -webkit-overflow-scrolling: touch;
     margin: auto;
-    margin-bottom: 0px  ;
+    margin-bottom: 5px  ;
     padding: 0px;
     height:   auto;
     width: 100%;
+    font-weight: normal;
     /* cursor: pointer; */
   }
 
   #chatdialogue .event-pallete:last-child{
     animation: fadein .6s forwards;
+    margin-bottom: 5px;
   }
 
   #chatdialogue .event-pallete .event-pallete-item{
     /* display: inline-block; */
     color: black;
     flex: 0 0 auto;
+    height: auto;
     /* background-color: white; */
     padding: 10px 10px 10px 10px;
     /* color: black; */
@@ -463,8 +477,8 @@ body {
     margin-bottom: 0px;
     /* margin-right: 10px; */
     margin-left: 10px;
-    border-radius: 15px;
-    border: 1px solid #c7bfbf;
+    border-radius: 0px 20px 20px 20px;
+    /* border: 1px solid #c7bfbf; */
     /* height: 100px; */
     width: 45%;
     cursor: pointer;
@@ -473,6 +487,10 @@ body {
     /* word-wrap:break-word; */
     /* word-break: break-all; */
     /* word-break: break-word; */
+    box-shadow: 0px 6px 4px 0px #DDDDDD;
+    -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD;
+    -moz-box-shadow: 0px 6px 4px 0px #DDDDDD;
+    -o-box-shadow: 0px 6px 4px 0px #DDDDDD;
   }
 
   #chatdialogue .event-pallete .event-pallete-item img{
@@ -510,5 +528,8 @@ body {
     /* display: inline-block; */
     background-color: white;
   }
+
+  
+
 
   
