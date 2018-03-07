@@ -1,5 +1,5 @@
 import { Component, OnInit, trigger, state, style, transition, animate, ViewEncapsulation, Renderer, AfterViewInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
 import { Inject} from "@angular/core";
@@ -37,8 +37,6 @@ declare var $ :any;
 
 export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges,AfterViewInit {
   // @ViewChild('resultWrapper') private mymsgbox: ElementRef;
-  
-
   event_patter:string = '[events]';
   // from service
     // using howler for playing sounds
@@ -55,7 +53,7 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges,Af
   showSearchButton: boolean;
     speechData: string;
     msgcount: number;
-  constructor(@Inject(DOCUMENT) private document: Document,private modalService: NgbModal,private speechRecognitionService: SpeechRecognitionService,private elementRef: ElementRef,renderer: Renderer) { 
+  constructor(@Inject(DOCUMENT) private document: Document,private speechRecognitionService: SpeechRecognitionService,private elementRef: ElementRef,renderer: Renderer) { 
     this.showSearchButton = false;
         this.speechData = "";
         this.msgcount =0;
@@ -130,6 +128,9 @@ this.diffpushdown();
 }
 
   sendMessage() {
+    if(this.formValue == ''){
+      return;
+    }
     this.converse(this.formValue);
     this.formValue = '';
     this.diffpushdown();
@@ -177,15 +178,24 @@ this.diffpushdown();
   // Adds message to source
   update(msg: Message) {
     this.newpushdown(result => {}); 
-
-
     var hook = document.getElementById('chatdialogue'); 
 
+
+    // code for limiting the count of msgs
+    this.msgcount = this.msgcount + 1;
+    if(this.msgcount == 70){
+      hook.innerHTML = '';
+      this.msgcount = 0;
+    }
+
+    
+
     if(msg.sentBy == 'bot'){
-      
+      // paper
       var paper_pattern = '[paper_presentation]';
       if(msg.content.includes(paper_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class=" separateimg"  src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class=" separateimg"  src="../../../assets/paper.jpeg" >';
+        msg.content = msg.content.replace(paper_pattern,'');
         
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
@@ -195,14 +205,17 @@ this.diffpushdown();
       var poster_pattern = '[poster_presentation]';
       if(msg.content.includes(poster_pattern)){
         hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
+        msg.content = msg.content.replace(poster_pattern,'');
         this.newpushdown(result => {}); 
+        
         // console.log('paper presentation key word found');
       }
 
       // opc
       var opc_pattern = '[online_programming_contest]';
       if(msg.content.includes(opc_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/opc.jpeg" >';
+        msg.content = msg.content.replace(opc_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -211,6 +224,7 @@ this.diffpushdown();
       var hackathon_pattern = '[hackathon]';
       if(msg.content.includes(hackathon_pattern)){
         hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
+        msg.content = msg.content.replace(hackathon_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -218,7 +232,8 @@ this.diffpushdown();
       // earn your time
       var earnyourtime_pattern = '[earn_your_time]';
       if(msg.content.includes(earnyourtime_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/earnyourtime1.png" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/earnyourtime1.jpeg" >';
+        msg.content = msg.content.replace(earnyourtime_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -226,7 +241,8 @@ this.diffpushdown();
       // time is up
       var timeisup_pattern = '[time_is_up]';
       if(msg.content.includes(timeisup_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/timesup.png" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/timesup.jpeg" >';
+        msg.content = msg.content.replace(timeisup_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -234,7 +250,8 @@ this.diffpushdown();
       // brick the code 
       var brick_pattern = '[brick_the_code]';
       if(msg.content.includes(brick_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/brickthecode.png" >';
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/brickthecode.jpeg" >';
+        msg.content = msg.content.replace(brick_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
@@ -242,10 +259,98 @@ this.diffpushdown();
       // crack it 
       var crack_pattern = '[crack_it]';
       if(msg.content.includes(crack_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/crackit.png" >';
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/crackit.jpeg" >';
+        msg.content = msg.content.replace(crack_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
+      // drawthecode
+      var drawthecode_pattern = '[draw_the_code]';
+      if(msg.content.includes(drawthecode_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/drawthecode.jpeg" >';
+        msg.content = msg.content.replace(drawthecode_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // codenladders
+      var codenladder_pattern = 'come onto to have fun with code n ladder';
+      if(msg.content.includes(codenladder_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/codenadders.jpeg" >';
+        msg.content = msg.content.replace(codenladder_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // tic tac toe
+      var tictactoe_pattern = '[tic_tac_toe]';
+      if(msg.content.includes(tictactoe_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/tictactoe.jpeg" >';
+        msg.content = msg.content.replace(tictactoe_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // wordmagic
+      var wordmagic_pattern = '[word_magic]';
+      if(msg.content.includes(wordmagic_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/magicwords.jpeg" >';
+        msg.content = msg.content.replace(wordmagic_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // crypt your mind
+      var crypt_pattern = '[crypt_your_mind]';
+      if(msg.content.includes(crypt_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/crypt.png" >';
+        msg.content = msg.content.replace(crypt_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // code auction
+      var codeauction_pattern = '[code_auction]';
+      if(msg.content.includes(codeauction_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/code_auction.jpeg" >';
+        msg.content = msg.content.replace(codeauction_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+      // crack it 
+      var snapit_pattern = '[snap_it]';
+      if(msg.content.includes(snapit_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/snapit.jpeg" >';
+        msg.content = msg.content.replace(snapit_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
+
+      // sponsors 
+      var sponsors_pattern = '[sponsors]';
+      if(msg.content.includes(sponsors_pattern)){
+        this.sliderforsponsor();
+        this.newpushdown(result => {}); 
+        return;
+      }
+      if(msg.content.includes('[newedge]')){
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/newedge.png" >';
+        msg.content = msg.content.replace('[newedge]','');
+        this.newpushdown(result => {}); 
+      }
+      if(msg.content.includes('[itversity]')){
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/itversity_logo.png" >';
+        msg.content = msg.content.replace('[itversity]','');
+        this.newpushdown(result => {}); 
+      }
+      if(msg.content.includes('PayMiTime is a Mobile App which gives instant discounts to customers based upon their time spent')){
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/paymi.png" >';
+        // msg.content = msg.content.replace('[newedge]','');
+        this.newpushdown(result => {}); 
+      }
+      if(msg.content.includes('[vivo]')){
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/vivo.png" >';
+        msg.content = msg.content.replace('[vivo]','');
+        this.newpushdown(result => {}); 
+      }
+
+
+
 
 
 
@@ -254,8 +359,34 @@ this.diffpushdown();
       // for the list of events
       if(msg.content.includes(this.event_patter)){
         // console.log('event pattern found');
-
-        hook.innerHTML = hook.innerHTML + '<div class="event-pallete"><div class=" container event-pallete-item paper"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Paper Presentation</div></div><div class=" container event-pallete-item poster"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Poster Presentation</div></div><div class=" container event-pallete-item opc"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">OPC</div></div><div class=" container event-pallete-item hackathon"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Hackathon</div></div><div class=" container event-pallete-item workshop"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Workshop</div></div><div class=" container event-pallete-item mock"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Mock Interview</div></div><div class=" container event-pallete-item treasure"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Treasure Hunt</div></div><div class=" container event-pallete-item tagteam"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">TagTeam Coding</div></div><div class=" container event-pallete-item efficient"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Efficient Coding</div></div><div class="container event-pallete-item drawthecode"><img src="../../../assets/drawthecode.png" alt=""><div class="text">Draw The Code</div></div><div class="container event-pallete-item codenladder"><img src="../../../assets/CodeNLadders.png" alt=""><div class="text">Code N Ladders</div></div><div class="container event-pallete-item tictactoe"><img src="../../../assets/tictactoe.jpeg" alt=""><div class="text">Tic Tac Toe</div></div><div class="container event-pallete-item snapit"><img src="../../../assets/tictactoe.jpeg" alt=""><div class="text">Code N Ladders</div></div><div class="container event-pallete-item wordmagic"><img src="../../../assets/magicwords.png" alt=""><div class="text">Word Magic</div></div><div class="container event-pallete-item crypt"><img src="../../../assets/crypt.png" alt=""><div class="text">Crypt Your Mind</div></div><div class="container event-pallete-item brick"><img src="../../../assets/brickthecode.png" alt=""><div class="text">Brick The Code</div></div><div class="container event-pallete-item codingquiz"><img src="../../../assets/brickthecode.png" alt=""><div class="text">Coding Quiz</div></div><div class="container event-pallete-item earnyourtime"><img src="../../../assets/earnyourtime1.png" alt=""><div class="text">Earn Your Time</div></div><div class="container event-pallete-item codeauction"><img src="../../../assets/earnyourtime1.png" alt=""><div class="text">Code Auction</div></div><div class="container event-pallete-item timeisup"><img src="../../../assets/timesup.png" alt=""><div class="text">Time Is Up</div></div><div class="container event-pallete-item crackit"><img src="../../../assets/crackit.png" alt=""><div class="text">Crack It</div></div></div>';
+        hook.innerHTML = hook.innerHTML+ '<div class="server-response">' + 'Swipe for more events. Click for more information about the event!' + '</div>';
+        hook.innerHTML = hook.innerHTML + 
+        '<div class="event-pallete">'+
+        '<div class=" container event-pallete-item paper"  ><img src="../../../assets/paper.jpeg" alt=""><div class="text">Paper Presentation</div></div>'+
+        '<div class=" container event-pallete-item poster"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Poster Presentation</div></div>'+
+        '<div class=" container event-pallete-item opc"  ><img src="../../../assets/opc.jpeg" alt=""><div class="text">OPC</div></div>'+
+        // '<div class=" container event-pallete-item hackathon"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Hackathon</div></div>'+
+        // '<div class=" container event-pallete-item workshop"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Workshop</div></div>'+
+        // '<div class=" container event-pallete-item mock"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Mock Interview</div></div>'+
+        // '<div class=" container event-pallete-item treasure"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Treasure Hunt</div></div>'+
+        // '<div class=" container event-pallete-item tagteam"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">TagTeam Coding</div></div>'+
+        // '<div class=" container event-pallete-item efficient"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Efficient Coding</div></div>'+
+        '<div class="container event-pallete-item drawthecode"><img src="../../../assets/drawthecode.jpeg" alt=""><div class="text">Draw The Code</div></div>'+
+        '<div class="container event-pallete-item codenladder"><img src="../../../assets/codenadders.jpeg" alt=""><div class="text">Code N Ladders</div></div>'+
+        '<div class="container event-pallete-item tictactoe"><img src="../../../assets/tictactoe.jpeg" alt=""><div class="text">Tic Tac Toe</div></div>'+
+        '<div class="container event-pallete-item wordmagic"><img src="../../../assets/magicwords.jpeg" alt=""><div class="text">Word Magic</div></div>'+
+        '<div class="container event-pallete-item crypt"><img src="../../../assets/crypt.png" alt=""><div class="text">Crypt Your Mind</div></div>'+
+        '<div class="container event-pallete-item brick"><img src="../../../assets/brickthecode.jpeg" alt=""><div class="text">Brick The Code</div></div>'+
+        // '<div class="container event-pallete-item codingquiz"><img src="../../../assets/brickthecode.png" alt=""><div class="text">Coding Quiz</div></div>'+
+        '<div class="container event-pallete-item earnyourtime"><img src="../../../assets/earnyourtime1.jpeg" alt=""><div class="text">Earn Your Time</div></div>'+
+        '<div class="container event-pallete-item codeauction"><img src="../../../assets/code_auction.jpeg" alt=""><div class="text">Code Auction</div></div>'+
+        '<div class="container event-pallete-item snapit"><img src="../../../assets/snapit.jpeg" alt=""><div class="text">Snappit</div></div>'+
+        '<div class="container event-pallete-item timeisup"><img src="../../../assets/timesup.jpeg" alt=""><div class="text">Time Is Up</div></div>'+
+        '<div class="container event-pallete-item crackit"><img src="../../../assets/crackit.jpeg" alt=""><div class="text">Crack It</div></div>'+
+        '</div>';
+        // events with no pictures as of now
+        
+        
         // <div class="container event-pallete-item"><img src="../../../assets/eventdemo.PNG" alt=""><div class="text">Paper Presentation</div></div>
         // <div class="container event-pallete-item"><img src="../../../assets/eventdemo.PNG" alt=""><div class="text">Paper Presentation</div></div>
         // </div>';
@@ -367,12 +498,24 @@ addall(){
   this.elementRef.nativeElement.querySelectorAll('.timeisup').forEach(element => {
     element.addEventListener('click',this.timeisup_sendmsg.bind(this));
   });
+  this.elementRef.nativeElement.querySelectorAll('.newedge').forEach(element => {
+    element.addEventListener('click',this.newedge_sendmsg.bind(this));
+  });
+  this.elementRef.nativeElement.querySelectorAll('.itversity').forEach(element => {
+    element.addEventListener('click',this.itversity_sendmsg.bind(this));
+  });this.elementRef.nativeElement.querySelectorAll('.paymitime').forEach(element => {
+    element.addEventListener('click',this.paymitime_sendmsg.bind(this));
+  });this.elementRef.nativeElement.querySelectorAll('.vivo').forEach(element => {
+    element.addEventListener('click',this.vivo_sendmsg.bind(this));
+  });
 }
+
 
  paper_sendmsg(){
    this.converse('Tell me about Paper Presentation');
    this.diffpushdown();
  }
+ 
  poster_sendmsg(){
    this.converse('Tell me about Poster Presentation')
  }
@@ -433,14 +576,43 @@ codeauction_sendmsg(){
  timeisup_sendmsg(){
    this.converse('Tell me about Time Is Up');
  }
-
+ newedge_sendmsg(){
+  this.converse('I would like to know more about New Edge!');
+}
+itversity_sendmsg(){
+  this.converse('I would like to know more about Itversity!');
+}
+paymitime_sendmsg(){
+  this.converse('I would like to know more about PayMiTime');
+}
+vivo_sendmsg(){
+  this.converse('I would like to know more about Vivo');
+  
+}
 
  sliderforteam(){
   var hook = document.getElementById('chatdialogue');
+  // code for limiting the count of msgs
+  this.msgcount = this.msgcount + 1;
+  if(this.msgcount == 70){
+    hook.innerHTML = '';
+    this.msgcount = 0;
+  }
+
   hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Hey tell me about the developer team for Acumen CS Fest 2k18' + '</div>';
   this.diffpushdown();
   setTimeout(() => {
-    hook.innerHTML = hook.innerHTML + '<div class="event-pallete"><div class=" container event-pallete-item"  ><img  style="height: 150px;"  src="../../../assets/nodp.jpg" alt=""><div class="text">Abhinav</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/shiva.jpg" alt=""><div class="text">Shiva</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Sandilya</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/somesh.jpg" alt=""><div class="text">Somesh</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Uttej</div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Manohar</div></div></div>';
+    hook.innerHTML = hook.innerHTML + '<div class="event-pallete">'+
+    '<div class=" container event-pallete-item"  ><img  style="height: 200px;width: 100%;"  src="../../../assets/shiva.jpeg" alt=""><div class="text">Shiva</div></div>'+
+    '<div class=" container event-pallete-item"   ><img style="height: 200px;width: 100%;" src="../../../assets/abhi.jpeg" alt=""><div class="text">Abhinav</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/somesh.jpeg" alt=""><div class="text">Somesh</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/sandy.jpeg" alt=""><div class="text">Sandilya</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/raj.jpeg" alt=""><div class="text">Raj</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/uttej.jpeg" alt=""><div class="text">Uttej</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/manohar.jpeg" alt=""><div class="text">Manohar</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/nodp.jpg" alt=""><div class="text">Kaushik</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/nodp.jpg" alt=""><div class="text">Chakradhar</div></div>'+
+    '</div>';
     this.insound.play();
   this.newpushdown(result => {});
   this.addall();
@@ -448,13 +620,63 @@ codeauction_sendmsg(){
   
 }
 
+sliderforsponsor(){
+  var hook = document.getElementById('chatdialogue');
+  // code for limiting the count of msgs
+  this.msgcount = this.msgcount + 1;
+  if(this.msgcount == 70){
+    hook.innerHTML = '';
+    this.msgcount = 0;
+  }
+
+  // hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Who are the sponsors for Acumen CS Fest?' + '</div>';
+  // this.diffpushdown();
+  setTimeout(() => {
+    hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'We have got some great sponsors lined up for this year! Keep sliding for more!'  + '</div>';
+    hook.innerHTML = hook.innerHTML + '<div class="event-pallete">'+
+    '<div class=" container event-pallete-item newedge" style="width: 300px" ><img  style="height: 200px; width: 100%;"  src="../../../assets/newedge.png" alt=""><div class="text">NEW EDGE</div></div>'+
+    '<div class=" container event-pallete-item itversity " style="width: 300px" ><img style="height: 200px ;width: 100%;" src="../../../assets/itversity_logo.png" alt=""><div class="text">ITVERSITY</div></div>'+
+    '<div class=" container event-pallete-item paymitime" style="width: 200px"><img style="height: 200px; width: 100%;" src="../../../assets/paymi.png" alt=""><div class="text">PAYMITIME</div></div>'+
+    '<div class=" container event-pallete-item vivo" style="width: 200px" ><img style="height: 200px; width: 100%;" src="../../../assets/vivo.png" alt=""><div class="text">VIVO</div></div>'+
+    '</div>';
+    this.insound.play();
+  this.newpushdown(result => {});
+  this.addall();
+  }, 100);
+  
+}
+
+
+
 
  sliderforcontact(){
   var hook = document.getElementById('chatdialogue');
+  // code for limiting the count of msgs
+  this.msgcount = this.msgcount + 1;
+  if(this.msgcount == 70){
+    hook.innerHTML = '';
+    this.msgcount = 0;
+  }
+
   hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
   this.diffpushdown();
   setTimeout(() => {
-    hook.innerHTML = hook.innerHTML + '<div class="event-pallete"><div class=" container event-pallete-item"  ><img  style="height: 150px;"  src="../../../assets/v.jpg" alt=""><div class="text">Vipanchith</div><div class="desc" style="font-size: 14px;" > <i class="fas fa-phone fa-rotate-90 " ></i><a href="tel:9030062281"> 9030062281 </a></div> </div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Sai Krishna</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/manasa.jpg" alt=""><div class="text">Manasa</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/honey.jpg" alt=""><div class="text">Honey</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Shashi Sir</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div><div class=" container event-pallete-item"  ><img style="height: 150px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Prof. Aadilakshmi</div><div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030062281"> 9030062281 </a></div></div></div>';
+    hook.innerHTML = hook.innerHTML + '<div class="event-pallete"   >'+
+    '<div class=" container event-pallete-item" ><img style="height: 200px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Dr. T. Aadilakshmi</div>'+
+    '</div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Shashi Kumar</div>'+
+    '</div>'+
+    '<div class=" container event-pallete-item"  ><img  style="height: 200px;"  src="../../../assets/vip.jpeg" alt=""><div class="text">Vipanchith Reddy</div>'+
+    '<div class="desc" style="font-size: 14px;" > <i class="fas fa-phone fa-rotate-90 " ></i><a href="tel:7416269757"> 7416269757 </a></div> </div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/saikrishna.jpeg" alt=""><div class="text">Sai Krishna</div>'+
+    '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030051070"> 9030051070 </a></div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/manasa.jpeg" alt=""><div class="text">Manasa</div>'+
+    '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9908836686"> 9908836686 </a></div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/honey.jpg" alt=""><div class="text">Honey</div>'+
+    '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9951152911"> 9951152911 </a></div></div>'+
+    
+    
+    '</div>';
     this.insound.play();
   this.newpushdown(result => {});
   this.addall();

@@ -12,9 +12,12 @@ export class CsfestComponent implements OnInit {
 
   ngOnInit() {
 
+    
+  }
+  do_something(){
     setTimeout(() => {
       this.router.navigate(['/venus']);
-   }, 1500);
+   }, 2000);
   }
 
 }

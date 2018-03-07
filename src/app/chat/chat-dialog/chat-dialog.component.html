@@ -45,7 +45,7 @@
     <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button> -->
 
 
-<div class="b-agent-demo_result" id="resultWrapper" style="background-color: #e0e0e0">
+<div class="b-agent-demo_result" id="resultWrapper" style="background-image: url('../../../assets/bg.png')">
   <table class="b-agent-demo_result-table" id="mytable" >
     <tbody>
       <tr>
@@ -75,7 +75,7 @@
 <div class="b-agent-demo contain "  >
   <div class="pallete" >
     <div class="pallete-items" (click)="sendshortmsg('What are the events being conducted this year?')">EVENTS</div>
-    <div class="pallete-items" (click)="sendshortmsg('Sponsors')" >SPONSORS</div>
+    <div class="pallete-items" (click)="sendshortmsg('Who are the sponsors for this year?')" >SPONSORS</div>
     <div class="pallete-items" (click)="sliderforcontact()" >CONTACT US</div>
     <div class="pallete-items" (click)="sliderforteam()" >DEVELOPERS</div>
     <div class="pallete-items" (click)="sendshortmsg('Navigation')" >NAVIGATION</div>
@@ -95,8 +95,10 @@
         -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD;
         -moz-box-shadow: 0px 6px 4px 0px #DDDDDD;
         -o-box-shadow: 0px 6px 4px 0px #DDDDDD ;  padding-left: 20px "     name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  (click)="pushdown()"  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
-         <i class="b-agent-demo_input-microphone material-icons-extended fas fa-microphone "  style="background-color: #ba101a; display: block; color: white; border-radius: 50%"  name="btnActivateSpeechSearchMovie"   id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"   [class.myownactive]="showSearchButton" ></i>
-        <!-- <div class="b-agent-demo_input-microphone material-icons-extended mic-red" id="mic"></div> -->
+         <!-- <i class="b-agent-demo_input-microphone material-icons-extended fas fa-microphone "      style="background-color: #ba101a; display: block; color: white; border-radius: 50%"  name="btnActivateSpeechSearchMovie" *ngIf="formValue=='' || (document.getElementById('query')!==document.activeElement)"  id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"   [class.myownactive]="showSearchButton" ></i> -->
+         <i class="b-agent-demo_input-microphone material-icons-extended fas fa-paper-plane fa-rotate-45  "      style="background-color: #ba101a; display: block; color: white; border-radius: 50%; margin-top: 0px" (click)="sendMessage()"    ></i>
+        
+         <!-- <div class="b-agent-demo_input-microphone material-icons-extended mic-red" id="mic"></div> -->
     </form>
   </div>
   </div>

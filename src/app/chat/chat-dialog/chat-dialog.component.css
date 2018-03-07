@@ -63,6 +63,7 @@ width: 1px;
 body {
     margin: 0;
     background: white;
+    scroll-behavior: smooth;
   }
   form {
     margin: 0;
@@ -80,6 +81,7 @@ body {
     /* bottom: 55px; */
     /* left: 0; */
     /* right: 0; */
+    scroll-behavior: smooth;
     
   }
    .user-request,
@@ -379,6 +381,7 @@ body {
   #result{
     /* animation: fadein .3s forwards; */
     overflow-y: scroll;
+    scroll-behavior: smooth;
   }
   
   /* #result:last-child{
@@ -420,6 +423,11 @@ body {
   .modal-content{
     z-index: 10;
   } */
+
+
+  #chatdialogue {
+    scroll-behavior: smooth;
+  }
 
   #chatdialogue .separateimg{
     margin: 10px 30px -5px 15px;
@@ -480,17 +488,17 @@ body {
     border-radius: 0px 20px 20px 20px;
     /* border: 1px solid #c7bfbf; */
     /* height: 100px; */
-    width: 45%;
+    width: 225px;
     cursor: pointer;
    
     /* white-space: nowrap; */
     /* word-wrap:break-word; */
     /* word-break: break-all; */
     /* word-break: break-word; */
-    box-shadow: 0px 6px 4px 0px #DDDDDD;
-    -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD;
-    -moz-box-shadow: 0px 6px 4px 0px #DDDDDD;
-    -o-box-shadow: 0px 6px 4px 0px #DDDDDD;
+    /* box-shadow: 0px 6px 4px 0px #DDDDDD; */
+    /* -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD; */
+    /* -moz-box-shadow: 0px 6px 4px 0px #DDDDDD; */
+    /* -o-box-shadow: 0px 6px 4px 0px #DDDDDD; */
   }
 
   #chatdialogue .event-pallete .event-pallete-item img{
@@ -498,8 +506,9 @@ body {
     margin: 0px;
     max-width: 100%;
     padding: 0px;
-    height: 200px;
-    border-radius: 0px;
+    height: 300px;
+    /* border-radius: 0px; */
+    border-radius: 0px 20px 0px 0px;
     /* white-space: nowrap; */
     /* display: inline-block; */
     /* word-wrap:break-word; */
@@ -530,6 +539,12 @@ body {
   }
 
   
-
+  .fa-rotate-45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
   

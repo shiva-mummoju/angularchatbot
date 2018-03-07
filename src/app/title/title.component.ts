@@ -11,9 +11,13 @@ export class TitleComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+   
+  }
+
+  do_something(){
     setTimeout(() => {
       this.router.navigate(['/csfest']);
-   }, 2500);
+   }, 2000);
   }
 
 }
