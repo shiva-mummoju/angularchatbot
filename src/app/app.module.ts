@@ -33,6 +33,10 @@ import 'hammerjs';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { TitleComponent } from './title/title.component';
 import { CsfestComponent } from './csfest/csfest.component';
+import { HttpModule } from '@angular/http';
+import {  AngularFireModule } from 'angularfire2';
+import { firebaseconfig } from './../environments/firebase.config';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 const appRoutes: Routes = [
   { path: '', component: TitleComponent ,   data: { animation: { value: 'data' } } },
@@ -79,9 +83,12 @@ const appRoutes: Routes = [
     NoopAnimationsModule,
     NgbModule.forRoot(),
     // AngularDraggableModule,
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseconfig),
   ],
   providers: [
-    SpeechRecognitionService
+    SpeechRecognitionService,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent]
 })

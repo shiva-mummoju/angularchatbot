@@ -5,6 +5,7 @@ import {trigger, animate, style, group, animateChild, query, stagger, transition
 
 // import { routerTransition } from './router.animations';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
+// import * as firebase from 'firebase/database';
 
 
 @Component({

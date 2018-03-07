@@ -10,6 +10,15 @@ import { ElementRef } from '@angular/core';
 import { OnChanges } from '@angular/core';
 import {  OnDestroy} from '@angular/core';
 import { SpeechRecognitionService } from '../speech-recognition.service';
+import { Http } from '@angular/http';
+
+// import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+// import { AngularFire }from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireDatabaseModule, AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase, } from 'angularfire2/database';
+// import * as firebase from 'firebase/app';
+
 
 // from service
 import { ApiAiClient } from 'api-ai-javascript';
@@ -49,15 +58,16 @@ export class ChatDialogComponent implements OnInit,AfterViewChecked,OnChanges,Af
 
   //  messages: Message[] = [];
   formValue: string;
+  n: any;
   sub: any;
   showSearchButton: boolean;
     speechData: string;
     msgcount: number;
-  constructor(@Inject(DOCUMENT) private document: Document,private speechRecognitionService: SpeechRecognitionService,private elementRef: ElementRef,renderer: Renderer) { 
+  constructor( private http: Http, private af : AngularFireDatabase, @Inject(DOCUMENT) private document: Document,private speechRecognitionService: SpeechRecognitionService,private elementRef: ElementRef,renderer: Renderer) { 
     this.showSearchButton = false;
         this.speechData = "";
         this.msgcount =0;
-
+      
 // dragulaService.dro.subscribe
         
   }
@@ -122,6 +132,9 @@ ngOnChanges(){
 }
 
 sendshortmsg(msg){
+  if(msg == ''){
+    return;
+  }
   // console.log('sendshortmsg has been called');
 this.converse(msg);
 this.diffpushdown();
@@ -172,11 +185,13 @@ this.diffpushdown();
                   const speech = res.result.fulfillment.speech;
                   const botMessage = new Message(speech, 'bot');
                   this.update(botMessage);
+                  this.increment_count();
                   // this.myevent.emit();
                });
   }
   // Adds message to source
   update(msg: Message) {
+    // this.increment_count();
     this.newpushdown(result => {}); 
     var hook = document.getElementById('chatdialogue'); 
 
@@ -348,6 +363,21 @@ this.diffpushdown();
         msg.content = msg.content.replace('[vivo]','');
         this.newpushdown(result => {}); 
       }
+      if(msg.content.includes('[adtran]')){
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/adtran.png" >';
+        msg.content = msg.content.replace('[adtran]','');
+        this.newpushdown(result => {}); 
+      }
+      if(msg.content.includes('[contact]')){
+        this.sliderforcontact();
+        this.newpushdown(result => {}); 
+        return;
+      }
+      if(msg.content.includes('[developers]')){
+        this.sliderforteam();
+        this.newpushdown(result => {}); 
+        return;
+      }
 
 
 
@@ -507,6 +537,8 @@ addall(){
     element.addEventListener('click',this.paymitime_sendmsg.bind(this));
   });this.elementRef.nativeElement.querySelectorAll('.vivo').forEach(element => {
     element.addEventListener('click',this.vivo_sendmsg.bind(this));
+  });this.elementRef.nativeElement.querySelectorAll('.adtran').forEach(element => {
+    element.addEventListener('click',this.adtran_sendmsg.bind(this));
   });
 }
 
@@ -589,17 +621,20 @@ vivo_sendmsg(){
   this.converse('I would like to know more about Vivo');
   
 }
+adtran_sendmsg(){
+  this.converse('I would like to know more about Adtran');
+}
 
  sliderforteam(){
   var hook = document.getElementById('chatdialogue');
   // code for limiting the count of msgs
-  this.msgcount = this.msgcount + 1;
-  if(this.msgcount == 70){
-    hook.innerHTML = '';
-    this.msgcount = 0;
-  }
+  // this.msgcount = this.msgcount + 1;
+  // if(this.msgcount == 70){
+  //   hook.innerHTML = '';
+  //   this.msgcount = 0;
+  // }
 
-  hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Hey tell me about the developer team for Acumen CS Fest 2k18' + '</div>';
+  hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'The people who made me a reality!' + '</div>';
   this.diffpushdown();
   setTimeout(() => {
     hook.innerHTML = hook.innerHTML + '<div class="event-pallete">'+
@@ -629,7 +664,7 @@ sliderforsponsor(){
     this.msgcount = 0;
   }
 
-  // hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Who are the sponsors for Acumen CS Fest?' + '</div>';
+  // hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'The ' + '</div>';
   // this.diffpushdown();
   setTimeout(() => {
     hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'We have got some great sponsors lined up for this year! Keep sliding for more!'  + '</div>';
@@ -638,6 +673,8 @@ sliderforsponsor(){
     '<div class=" container event-pallete-item itversity " style="width: 300px" ><img style="height: 200px ;width: 100%;" src="../../../assets/itversity_logo.png" alt=""><div class="text">ITVERSITY</div></div>'+
     '<div class=" container event-pallete-item paymitime" style="width: 200px"><img style="height: 200px; width: 100%;" src="../../../assets/paymi.png" alt=""><div class="text">PAYMITIME</div></div>'+
     '<div class=" container event-pallete-item vivo" style="width: 200px" ><img style="height: 200px; width: 100%;" src="../../../assets/vivo.png" alt=""><div class="text">VIVO</div></div>'+
+    '<div class=" container event-pallete-item adtran" style="width: 200px;" ><img style="margin: 50px 0px 50px 0px;height: 100px; width: 100%;" src="../../../assets/adtran.png" alt=""><div class="text">ADTRAN</div></div>'+
+    
     '</div>';
     this.insound.play();
   this.newpushdown(result => {});
@@ -652,13 +689,9 @@ sliderforsponsor(){
  sliderforcontact(){
   var hook = document.getElementById('chatdialogue');
   // code for limiting the count of msgs
-  this.msgcount = this.msgcount + 1;
-  if(this.msgcount == 70){
-    hook.innerHTML = '';
-    this.msgcount = 0;
-  }
+ 
 
-  hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
+  // hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
   this.diffpushdown();
   setTimeout(() => {
     hook.innerHTML = hook.innerHTML + '<div class="event-pallete"   >'+
@@ -681,5 +714,38 @@ sliderforsponsor(){
   this.newpushdown(result => {});
   this.addall();
   }, 1000);
+ }
+
+
+ increment_count(){
+   this.af.object('/msg').query.ref.transaction((c:number)=>{
+     return c +  1;
+   })
+ }
+ displaynumber(){
+   this.increment_count();
+  var hook = document.getElementById('chatdialogue');
+  // code for limiting the count of msgs
+ this.n = this.af.list('/');
+ hook.innerHTML = hook.innerHTML + '<div class="user-request">' + "What's the total message count?"+ '</div>';
+ this.pushdown();
+ this.http.get('https://msgcount-d33d7.firebaseio.com/msg.json')
+  .subscribe(
+    (v) => {
+      this.n = v.json();
+      
+      
+      // setTimeout(()=>{
+        hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'Total messsage count till now:  ' + this.n + '</div>';
+        this.insound.play();
+        this.pushdown();
+      // },500);
+
+      // console.log(this.n);
+      }
+  );
+
+  
+  
  }
   }
