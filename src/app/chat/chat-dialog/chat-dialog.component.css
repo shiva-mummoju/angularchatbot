@@ -98,6 +98,9 @@ body {
    .server-response.server-response-error {
     background-color: #F76949;
   }
+  .owncontainer{
+    width: 100%;
+  }
    .user-request {
     background-color: #ba101a;
     float: right;
@@ -357,6 +360,7 @@ body {
     margin-left: -10px;
   }
   .b-agent-demo .b-agent-demo_powered_by img {
+    display: block; 
     margin-top: 7px;
     height: 16px;
     margin-right: 20px;
@@ -430,19 +434,24 @@ body {
   }
 
   #chatdialogue .separateimg{
+    display: block;
     margin: 10px 30px -5px 15px;
-    max-width:  80%;
+    width: 300px;
+    height: 400px;
     padding: 10px 10px 10px 10px;
     /* color: black; */
     background-color: white;
     /* animation: fadein .6s forwards; */
     border-radius: 0px 20px 20px 20px;
     /* border: 1px solid #c7bfbf; */
+    clear: both;
     
   }
 
   #chatdialogue .separateimg:last-child{
+    display: block;
     animation: fadein .6s forwards;
+    clear: both;
   }
 
   #chatdialogue .event-pallete{
@@ -470,7 +479,7 @@ body {
   }
 
   #chatdialogue .event-pallete .event-pallete-item{
-    /* display: inline-block; */
+    display: inline-block;
     color: black;
     flex: 0 0 auto;
     height: auto;
@@ -490,7 +499,7 @@ body {
     /* height: 100px; */
     width: 225px;
     cursor: pointer;
-   
+   clear: both;
     /* white-space: nowrap; */
     /* word-wrap:break-word; */
     /* word-break: break-all; */
@@ -502,6 +511,7 @@ body {
   }
 
   #chatdialogue .event-pallete .event-pallete-item img{
+    display: block;
     width: 100%;
     margin: 0px;
     max-width: 100%;
@@ -512,9 +522,11 @@ body {
     /* white-space: nowrap; */
     /* display: inline-block; */
     /* word-wrap:break-word; */
+    clear: both;
   }
 
   #chatdialogue .event-pallete .event-pallete-item .text{
+
       text-align: center;
       text-transform: capitalize;
       font-size: 16px;

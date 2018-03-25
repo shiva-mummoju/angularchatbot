@@ -209,7 +209,7 @@ this.diffpushdown();
       // paper
       var paper_pattern = '[paper_presentation]';
       if(msg.content.includes(paper_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class=" separateimg"  src="../../../assets/paper.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class=" separateimg"  src="../../../assets/paper_new.png" >';
         msg.content = msg.content.replace(paper_pattern,'');
         
         this.newpushdown(result => {}); 
@@ -219,7 +219,7 @@ this.diffpushdown();
       // poster presentation
       var poster_pattern = '[poster_presentation]';
       if(msg.content.includes(poster_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/poster_new.jpg" >';
         msg.content = msg.content.replace(poster_pattern,'');
         this.newpushdown(result => {}); 
         
@@ -229,7 +229,7 @@ this.diffpushdown();
       // opc
       var opc_pattern = '[online_programming_contest]';
       if(msg.content.includes(opc_pattern)){
-        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/opc.jpeg" >';
+        hook.innerHTML = hook.innerHTML + '<img class="separateimg"  src="../../../assets/opc_new.jpeg" >';
         msg.content = msg.content.replace(opc_pattern,'');
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
@@ -288,7 +288,7 @@ this.diffpushdown();
         // console.log('paper presentation key word found');
       }
       // codenladders
-      var codenladder_pattern = 'come onto to have fun with code n ladder';
+      var codenladder_pattern = '[code_n_ladder]';
       if(msg.content.includes(codenladder_pattern)){
         hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/codenadders.jpeg" >';
         msg.content = msg.content.replace(codenladder_pattern,'');
@@ -319,6 +319,14 @@ this.diffpushdown();
         this.newpushdown(result => {}); 
         // console.log('paper presentation key word found');
       }
+      // mock interview
+      var mock_pattern = '[mock]';
+      if(msg.content.includes(mock_pattern)){
+        hook.innerHTML = hook.innerHTML + '<img  class="separateimg" src="../../../assets/mock.jpg" >';
+        msg.content = msg.content.replace(mock_pattern,'');
+        this.newpushdown(result => {}); 
+        // console.log('paper presentation key word found');
+      }
       // code auction
       var codeauction_pattern = '[code_auction]';
       if(msg.content.includes(codeauction_pattern)){
@@ -344,7 +352,7 @@ this.diffpushdown();
         return;
       }
       if(msg.content.includes('[newedge]')){
-        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/newedge.png" >';
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/newedgelogo.png" >';
         msg.content = msg.content.replace('[newedge]','');
         this.newpushdown(result => {}); 
       }
@@ -369,12 +377,19 @@ this.diffpushdown();
         this.newpushdown(result => {}); 
       }
       if(msg.content.includes('[contact]')){
-        this.sliderforcontact();
+        // this.sliderforcontact();
         this.newpushdown(result => {}); 
-        return;
+        // return;
       }
       if(msg.content.includes('[developers]')){
         this.sliderforteam();
+        this.newpushdown(result => {}); 
+        return;
+      }
+      if(msg.content.includes('[circuit]')){
+        // hook.innerHTML = hook.innerHTML+ '<div class="server-response separateimg">' + 'How do I look? :p' + '</div>';
+        hook.innerHTML = hook.innerHTML + '<img style="height: auto; width: 300px" class="separateimg" src="../../../assets/circuit.jpg" >';
+        msg.content = msg.content.replace('[circuit]','');
         this.newpushdown(result => {}); 
         return;
       }
@@ -392,12 +407,12 @@ this.diffpushdown();
         hook.innerHTML = hook.innerHTML+ '<div class="server-response">' + 'Swipe for more events. Click for more information about the event!' + '</div>';
         hook.innerHTML = hook.innerHTML + 
         '<div class="event-pallete">'+
-        '<div class=" container event-pallete-item paper"  ><img src="../../../assets/paper.jpeg" alt=""><div class="text">Paper Presentation</div></div>'+
-        '<div class=" container event-pallete-item poster"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Poster Presentation</div></div>'+
-        '<div class=" container event-pallete-item opc"  ><img src="../../../assets/opc.jpeg" alt=""><div class="text">OPC</div></div>'+
+        '<div class=" container event-pallete-item paper"  ><img src="../../../assets/paper_new.png" alt=""><div class="text">Paper Presentation</div></div>'+
+        '<div class=" container event-pallete-item poster"  ><img src="../../../assets/poster_new.jpg" alt=""><div class="text">Poster Presentation</div></div>'+
+        '<div class=" container event-pallete-item opc"  ><img src="../../../assets/opc_new.jpeg" alt=""><div class="text">OPC</div></div>'+
         // '<div class=" container event-pallete-item hackathon"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Hackathon</div></div>'+
         // '<div class=" container event-pallete-item workshop"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Workshop</div></div>'+
-        // '<div class=" container event-pallete-item mock"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Mock Interview</div></div>'+
+        '<div class=" container event-pallete-item mock"  ><img src="../../../assets/mock.jpg" alt=""><div class="text">Mock Interview</div></div>'+
         // '<div class=" container event-pallete-item treasure"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Treasure Hunt</div></div>'+
         // '<div class=" container event-pallete-item tagteam"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">TagTeam Coding</div></div>'+
         // '<div class=" container event-pallete-item efficient"  ><img src="../../../assets/poster.jpeg" alt=""><div class="text">Efficient Coding</div></div>'+
@@ -430,8 +445,15 @@ this.diffpushdown();
         }
       
 
-        if(msg.content.includes('https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=')){
-          hook.innerHTML = hook.innerHTML + '<div class="server-response">' + '<i class="fas fa-map-marker-alt"></i><a href="' + 'https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=">' + '  Click here for navigation' + '</a>' + '</div>';
+        if(msg.content.includes('[navigation]')){
+          // hook.innerHTML = hook.innerHTML+ '<div class="server-response">'+ '<a href="' + 'https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=">' + 'Click here for navigation'+'</a>  ' + '</div>';
+          hook.innerHTML = hook.innerHTML + 
+          '<div class="event-pallete">'+
+          '<div class="event-pallete-item" >' + '<a href="' + 'https://www.google.com/maps/dir/?api=1&destination=17.380337,78.382667&origin=">' + 
+          '<img style="height: auto; width: auto"  src="../../../assets/map.png" >'+
+          '<div class="text">Click here</div>'+ 
+           '</a>' + '</div>'+
+          '</div';
           this.addall();
           this.insound.play();
           return;
@@ -448,7 +470,7 @@ this.diffpushdown();
     }
     if( msg.sentBy == 'bot'){
       this.insound.play();
-      this.newpushdown(result => {}); 
+      this.newpushdown(result => {});   
     } 
 
     this.formValue = '';
@@ -642,11 +664,12 @@ adtran_sendmsg(){
     '<div class=" container event-pallete-item"   ><img style="height: 200px;width: 100%;" src="../../../assets/abhi.jpeg" alt=""><div class="text">Abhinav</div></div>'+
     '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/somesh.jpeg" alt=""><div class="text">Somesh</div></div>'+
     '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/sandy.jpeg" alt=""><div class="text">Sandilya</div></div>'+
-    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/raj.jpeg" alt=""><div class="text">Raj</div></div>'+
     '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/uttej.jpeg" alt=""><div class="text">Uttej</div></div>'+
-    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/manohar.jpeg" alt=""><div class="text">Manohar</div></div>'+
-    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/nodp.jpg" alt=""><div class="text">Kaushik</div></div>'+
-    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/nodp.jpg" alt=""><div class="text">Chakradhar</div></div>'+
+    
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/raj.jpeg" alt=""><div class="text">Raj</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/manohar.jpg" alt=""><div class="text">Manohar</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/kaushik.jpg" alt=""><div class="text">Kaushik</div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;width: 100%;" src="../../../assets/chakr.jpg" alt=""><div class="text">Chakradhar</div></div>'+
     '</div>';
     this.insound.play();
   this.newpushdown(result => {});
@@ -669,7 +692,7 @@ sliderforsponsor(){
   setTimeout(() => {
     hook.innerHTML = hook.innerHTML + '<div class="server-response">' + 'We have got some great sponsors lined up for this year! Keep sliding for more!'  + '</div>';
     hook.innerHTML = hook.innerHTML + '<div class="event-pallete">'+
-    '<div class=" container event-pallete-item newedge" style="width: 300px" ><img  style="height: 200px; width: 100%;"  src="../../../assets/newedge.png" alt=""><div class="text">NEW EDGE</div></div>'+
+    '<div class=" container event-pallete-item newedge" style="width: 300px" ><img  style="height: 200px; width: 100%;"  src="../../../assets/newlogo.png" alt=""><div class="text">NEW EDGE</div></div>'+
     '<div class=" container event-pallete-item itversity " style="width: 300px" ><img style="height: 200px ;width: 100%;" src="../../../assets/itversity_logo.png" alt=""><div class="text">ITVERSITY</div></div>'+
     '<div class=" container event-pallete-item paymitime" style="width: 200px"><img style="height: 200px; width: 100%;" src="../../../assets/paymi.png" alt=""><div class="text">PAYMITIME</div></div>'+
     '<div class=" container event-pallete-item vivo" style="width: 200px" ><img style="height: 200px; width: 100%;" src="../../../assets/vivo.png" alt=""><div class="text">VIVO</div></div>'+
@@ -689,15 +712,20 @@ sliderforsponsor(){
  sliderforcontact(){
   var hook = document.getElementById('chatdialogue');
   // code for limiting the count of msgs
- 
+ this.msgcount = this.msgcount + 1;
+  if(this.msgcount == 70){
+    hook.innerHTML = '';
+    this.msgcount = 0;
+  }
 
-  // hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
+  hook.innerHTML = hook.innerHTML + '<div class="user-request">' + 'Whom should I contact for more details?' + '</div>';
   this.diffpushdown();
+  this.increment_count();
   setTimeout(() => {
     hook.innerHTML = hook.innerHTML + '<div class="event-pallete"   >'+
-    '<div class=" container event-pallete-item" ><img style="height: 200px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Dr. T. Aadilakshmi</div>'+
+    '<div class=" container event-pallete-item" ><img style="height: 200px;" src="../../../assets/hod2.jpg" alt=""><div class="text">Dr. T. Adilakshmi</div>'+
     '</div>'+
-    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/nodp.jpg" alt=""><div class="text">Shashi Kumar</div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/sashi.jpg" alt=""><div class="text">Mr. M. S. V. Sashi Kumar</div>'+
     '</div>'+
     '<div class=" container event-pallete-item"  ><img  style="height: 200px;"  src="../../../assets/vip.jpeg" alt=""><div class="text">Vipanchith Reddy</div>'+
     '<div class="desc" style="font-size: 14px;" > <i class="fas fa-phone fa-rotate-90 " ></i><a href="tel:7416269757"> 7416269757 </a></div> </div>'+
@@ -705,6 +733,9 @@ sliderforsponsor(){
     '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9030051070"> 9030051070 </a></div></div>'+
     '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/manasa.jpeg" alt=""><div class="text">Manasa</div>'+
     '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9908836686"> 9908836686 </a></div></div>'+
+    '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/parthu.jpg" alt=""><div class="text">Parthu</div>'+
+    '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:8121731761"> 8121731761 </a></div></div>'+
+    
     '<div class=" container event-pallete-item"  ><img style="height: 200px;" src="../../../assets/honey.jpg" alt=""><div class="text">Honey</div>'+
     '<div class="desc" style="font-size: 14px;" ><i class="fas fa-phone fa-rotate-90 " ></i> <a href="tel:9951152911"> 9951152911 </a></div></div>'+
     

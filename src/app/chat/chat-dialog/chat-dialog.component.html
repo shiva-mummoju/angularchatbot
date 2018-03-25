@@ -41,7 +41,11 @@
   </div>
 </div> -->
   <!-- </div> -->
-  <div class="b-agent-demo" style="background-color: grey" > 
+
+
+<!-- <div class="row" > -->
+  <!-- <div class="col col-lg-3"> -->
+  <div class="b-agent-demo " style="background-color: grey" > 
     <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Large Modal</button> -->
 
 
@@ -76,7 +80,7 @@
   <div class="pallete" >
     <div class="pallete-items" (click)="sendshortmsg('What are the events being conducted this year?')">EVENTS</div>
     <div class="pallete-items" (click)="sendshortmsg('Who are the sponsors for this year?')" >SPONSORS</div>
-    <div class="pallete-items" (click)="sendshortmsg('Whom should I contact for information?')" >CONTACT US</div>
+    <div class="pallete-items" (click)="sliderforcontact()" >CONTACT US</div>
     <div class="pallete-items" (click)="sendshortmsg('Who are the developers?')" >DEVELOPERS</div>
     <div class="pallete-items" (click)="displaynumber()" >MSG COUNT</div>
     <div class="pallete-items" (click)="sendshortmsg('Navigation')" >NAVIGATION</div>
@@ -95,7 +99,7 @@
         <input type="text" style="border-radius: 20px; border: 1px solid lightgrey;  ;  box-shadow: 0px 6px 4px 0px #DDDDDD;
         -webkit-box-shadow: 0px 6px 4px 0px #DDDDDD;
         -moz-box-shadow: 0px 6px 4px 0px #DDDDDD;
-        -o-box-shadow: 0px 6px 4px 0px #DDDDDD ;  padding-left: 20px "     name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  (click)="pushdown()"  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
+        -o-box-shadow: 0px 6px 4px 0px #DDDDDD ;  padding-left: 20px "     name="q" [(ngModel)]="formValue" id="query" placeholder="Ask something..."  (click)="pushdown()" (keyup)="pushdown()"  autocomplete="false" autocomplete="new-password" (keyup.enter)="sendMessage()">
          <!-- <i class="b-agent-demo_input-microphone material-icons-extended fas fa-microphone "      style="background-color: #ba101a; display: block; color: white; border-radius: 50%"  name="btnActivateSpeechSearchMovie" *ngIf="formValue=='' || (document.getElementById('query')!==document.activeElement)"  id="btnActivateSpeechSearchMovie" (click)="activateSpeechSearchMovie()"   [class.myownactive]="showSearchButton" ></i> -->
          <i class="b-agent-demo_input-microphone material-icons-extended fas fa-paper-plane fa-rotate-45  "      style="background-color: #ba101a; display: block; color: white; border-radius: 50%; margin-top: 0px" (click)="sendMessage()"    ></i>
         
@@ -103,7 +107,8 @@
     </form>
   </div>
   </div>
-
+  <!-- </div>  -->
+<!-- </div> -->
 
 <!-- 
   <div class="event-pallete">
