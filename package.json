@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preinstall": "npm cache clean --force",
+    "preinstall": "npm cache clean --force"
   },
   "engines": {
     "node": "10.0.0",
